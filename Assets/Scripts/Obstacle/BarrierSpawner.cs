@@ -14,8 +14,20 @@ public class BarrierSpawner : MonoBehaviour
 
     void BarrierSpawn()
     {
-        int indexBarrier = Random.Range(2, 5);
-        Transform spawnPoint = transform.GetChild(indexBarrier).transform;
-        Instantiate(BarrierPrefab, spawnPoint.position, Quaternion.identity, transform);
+        int numberOfBarrier = Random.Range(1, 4);
+        Queue<int> previousNumber = new Queue<int>();
+        for (int i = 1; i <= numberOfBarrier; i++)
+        {
+            int indexBarrier;
+            do
+            {
+                indexBarrier = Random.Range(2, 5);
+            } while(previousNumber.Contains(indexBarrier));
+
+            previousNumber.Enqueue(indexBarrier);
+
+            Transform spawnPoint = transform.GetChild(indexBarrier).transform;
+            Instantiate(BarrierPrefab, spawnPoint.position, Quaternion.identity, transform);
+        }
     }
 }
