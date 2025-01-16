@@ -17,7 +17,6 @@ public class GroundSpawner : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
