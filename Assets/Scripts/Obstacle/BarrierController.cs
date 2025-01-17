@@ -11,4 +11,5 @@ public class BarrierController : MonoBehaviour
             PlayerController.Instance.Die();
         }
     }
+
 }
