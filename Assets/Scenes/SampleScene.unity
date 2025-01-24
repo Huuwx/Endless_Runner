@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lane: {fileID: 1636090731}
-  speed: 6
+  speed: 10
   jumpForce: 900
 --- !u!114 &287636735
 MonoBehaviour:
@@ -357,7 +357,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSpawnPoint: {x: 0, y: 0, z: 25.2}
-  groundTile: {fileID: 2026619498105937804, guid: a4e872b6fac3cc04d96fe5d9701352ae, type: 3}
+  groundTile:
+  - {fileID: 2026619498105937804, guid: a4e872b6fac3cc04d96fe5d9701352ae, type: 3}
+  - {fileID: 2026619498105937804, guid: ff41276c15200834ebebfe3611a11f46, type: 3}
+  - {fileID: 2026619498105937804, guid: 7eee7829491f7fd44a0063220b960dd4, type: 3}
+  - {fileID: 2026619498105937804, guid: c2b184b2c5b8f41499aebc27a4585750, type: 3}
+  - {fileID: 2026619498105937804, guid: ea4d7de656dbfb04996d494c0ea40d15, type: 3}
   groundSpawner: {fileID: 346266424}
 --- !u!1 &705507993
 GameObject:

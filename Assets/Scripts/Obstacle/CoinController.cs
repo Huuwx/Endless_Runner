@@ -17,13 +17,6 @@ public class CoinController : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("+ 1");
-        }
-        else if(other.gameObject.tag == "Barrier")
-        {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 3, gameObject.transform.position.z);
-        }
-        else if(other.gameObject.tag == "Coin")
-        {
             Destroy(gameObject);
         }
     }

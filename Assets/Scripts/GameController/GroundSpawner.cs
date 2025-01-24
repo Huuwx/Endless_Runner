@@ -10,7 +10,7 @@ public class GroundSpawner : MonoBehaviour
 
     public Vector3 nextSpawnPoint;
 
-    public GameObject groundTile;
+    public List<GameObject> groundTile;
     [SerializeField] Transform groundSpawner;
     private void Awake()
     {
@@ -36,7 +36,9 @@ public class GroundSpawner : MonoBehaviour
 
     public void SpawnTile()
     {
-        GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity, groundSpawner);
+        int indexGroundTile = Random.Range(0, groundTile.Count);
+
+        GameObject temp = Instantiate(groundTile[indexGroundTile], nextSpawnPoint, Quaternion.identity, groundSpawner);
 
         // temp.transform.GetChild(1).position: la bang vi tri hien tai cua GroundTile cong voi vi tri hien tai cua GameObject con thu 1 (la NextSpawnPoint)
         nextSpawnPoint = temp.transform.GetChild(1).position;
