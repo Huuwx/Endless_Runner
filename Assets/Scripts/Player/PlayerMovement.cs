@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     public GameObject lane;
+
+    private int desiredLane = 1;
+    public float laneDistance = 3;
 
     [SerializeField] float speed = 20f;
     //Jump
@@ -22,53 +26,50 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && PlayerController.Instance.GetIsGrounded() == true) 
-        {
-            Jump();
-        }
         if (PlayerController.Instance.GetIsAlive() == true)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (SwipeManager.swipeUp && PlayerController.Instance.GetIsGrounded() == true)
             {
-                // Get current lane index
-                int currentLane = 0;
-                for (int i = 0; i < 3; i++)
-                {
-                    if (Mathf.Approximately(transform.position.x, lane.transform.GetChild(i).position.x))
-                    {
-                        currentLane = i;
-                        break;
-                    }
-                }
+                Jump();
+            }
 
-                // Move left if not in leftmost lane
-                if (currentLane > 0)
+            if (SwipeManager.swipeLeft)
+            {
+                desiredLane--;
+                if(desiredLane == -1)
                 {
-                    Vector3 newPos = transform.position;
-                    newPos.x = lane.transform.GetChild(currentLane - 1).position.x;
-                    transform.position = newPos;
+                    desiredLane = 0;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (SwipeManager.swipeRight)
             {
-                // Get current lane index
-                int currentLane = 0;
-                for (int i = 0; i < 3; i++)
+                desiredLane++;
+                if (desiredLane == 3)
                 {
-                    if (Mathf.Approximately(transform.position.x, lane.transform.GetChild(i).position.x))
-                    {
-                        currentLane = i;
-                        break;
-                    }
+                    desiredLane = 2;
                 }
+            }
 
-                // Move right if not in rightmost lane
-                if (currentLane < 2)
-                {
-                    Vector3 newPos = transform.position;
-                    newPos.x = lane.transform.GetChild(currentLane + 1).position.x;
-                    transform.position = newPos;
-                }
+            Vector3 targetPos = transform.position.z * transform.forward + transform.position.y * transform.up;
+
+            if(desiredLane == 0)
+            {
+                targetPos += Vector3.left * laneDistance;
+            }else if(desiredLane == 2)
+            {
+                targetPos += Vector3.right * laneDistance;
+            }
+
+            //transform.position = Vector3.Lerp(targetPos, targetPos, 80 * Time.deltaTime);
+
+            if (transform.position != targetPos)
+            {
+                Vector3 diff = targetPos - transform.position;
+                Vector3 moveDir = diff.normalized * 30 * Time.deltaTime;
+                if (moveDir.sqrMagnitude < diff.magnitude)
+                    rb.MovePosition(transform.position + moveDir);
+                else
+                    rb.MovePosition(targetPos);
             }
         }
     }
