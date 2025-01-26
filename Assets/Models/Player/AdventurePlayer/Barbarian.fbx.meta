@@ -964,7 +964,7 @@ ModelImporter:
       name: 1H_Melee_Attack_Slice_Horizontal
       takeName: 1H_Melee_Attack_Slice_Horizontal
       internalID: 1543802850930067805
-      firstFrame: 0
+      firstFrame: 6
       lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0

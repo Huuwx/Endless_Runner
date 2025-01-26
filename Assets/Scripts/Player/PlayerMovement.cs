@@ -94,6 +94,6 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         PlayerController.Instance.animator.SetBool("Jump", true);
-        rb.AddForce(Vector3.up * jumpForce);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
