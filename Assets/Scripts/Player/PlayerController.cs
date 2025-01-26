@@ -62,6 +62,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Jump", false);
             isGrounded = true;
         }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            
+        }
     }
 
     private void OnCollisionStay(Collision collision)

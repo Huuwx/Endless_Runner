@@ -35,6 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
             if (SwipeManager.swipeLeft)
             {
+                if (PlayerController.Instance.GetIsGrounded())
+                {
+                    PlayerController.Instance.animator.SetTrigger("swipeLeft");
+                }
                 desiredLane--;
                 if(desiredLane == -1)
                 {
@@ -43,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (SwipeManager.swipeRight)
             {
+                if (PlayerController.Instance.GetIsGrounded())
+                {
+                    PlayerController.Instance.animator.SetTrigger("swipeRight");
+                }
                 desiredLane++;
                 if (desiredLane == 3)
                 {
