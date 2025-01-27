@@ -9,7 +9,7 @@ public class BarrierController : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             PlayerController.Instance.Die();
-            collision.rigidbody.AddForce(new Vector3(0, 1, -1) * 10, ForceMode.Impulse);
+            collision.rigidbody.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
         }
     }
 
