@@ -47,12 +47,13 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         isAlive = false;
+        animator.SetTrigger("Death");
         GameOver();
     }
 
     public void GameOver()
     {
-        SceneController.Instance.LoadSceneWithName("SampleScene");
+        //SceneController.Instance.LoadSceneWithName("SampleScene");
     }
 
     private void OnCollisionEnter(Collision collision)

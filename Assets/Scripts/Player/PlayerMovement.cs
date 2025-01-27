@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
             if (transform.position != targetPos)
             {
                 Vector3 diff = targetPos - transform.position;
-                Vector3 moveDir = diff.normalized * 30 * Time.deltaTime;
+                Vector3 moveDir = diff.normalized * 35 * Time.deltaTime;
                 if (moveDir.sqrMagnitude < diff.sqrMagnitude)
                     rb.MovePosition(transform.position + moveDir);
                 else
