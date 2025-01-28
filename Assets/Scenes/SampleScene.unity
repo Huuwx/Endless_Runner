@@ -408,7 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lane: {fileID: 0}
   laneDistance: 3
-  speed: 11
+  speed: 15
   jumpForce: 17
 --- !u!114 &287636735
 MonoBehaviour:

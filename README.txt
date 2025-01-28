@@ -1,1 +1,3 @@
 weapons of player in Rig->root->hips->spine->chest->upperarm....
+
+Bugs: khi chem thung ma di chuyen nhan vat va vao thung bi vang nhan vat se bi vang theo
