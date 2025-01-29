@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
-        //SceneController.Instance.LoadSceneWithName("SampleScene");
+        GameManager.Instance.GameOver();
     }
 
     private void OnCollisionEnter(Collision collision)

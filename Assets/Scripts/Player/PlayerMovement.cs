@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerController.Instance.GetIsAlive() == true)
+        if (PlayerController.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
         {
             if (SwipeManager.swipeUp && PlayerController.Instance.GetIsGrounded() == true)
             {
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PlayerController.Instance.GetIsAlive() == true)
+        if (PlayerController.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
         {
             Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + forwardMove);

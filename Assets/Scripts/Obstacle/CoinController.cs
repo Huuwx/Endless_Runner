@@ -16,7 +16,7 @@ public class CoinController : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("+ 1");
+            GameManager.Instance.UpdateCoin();
             Destroy(gameObject);
         }
     }

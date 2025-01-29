@@ -22,4 +22,14 @@ public class CannonController : BarrierController
             rb.MovePosition(rb.position + forwardMove);
         }
     }
+
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            PlayerController.Instance.Die();
+            collision.rigidbody.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
+            isActive = false;
+        }
+    }
 }
