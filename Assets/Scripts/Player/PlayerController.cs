@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     private static PlayerController instance;
     public static PlayerController Instance { get { return instance; } }
+
+    private PlayerMovement playerMovement;
 
     public Animator animator;
 
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -67,6 +71,18 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
+            collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
+        }
+        else if (collision.gameObject.CompareTag("Bridge"))
+        {
+            playerMovement.BackToCurrentLane();
+        }
+        else if (collision.gameObject.CompareTag("Bounce"))
+        {
+            Animator Banimator = collision.gameObject.GetComponent<Animator>();
+            Banimator.SetTrigger("Activate");
+            playerMovement.Bounce();
+            animator.SetBool("Jump", true);
         }
     }
 

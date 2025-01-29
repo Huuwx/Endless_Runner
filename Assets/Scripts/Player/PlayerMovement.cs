@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject lane;
 
+    private int currentLane = 1;
     private int desiredLane = 1;
     public float laneDistance = 3;
 
@@ -40,9 +41,11 @@ public class PlayerMovement : MonoBehaviour
                     PlayerController.Instance.animator.SetTrigger("swipeLeft");
                 }
                 desiredLane--;
+                currentLane = desiredLane + 1;
                 if(desiredLane == -1)
                 {
                     desiredLane = 0;
+                    currentLane = 0;
                 }
             }
             else if (SwipeManager.swipeRight)
@@ -52,9 +55,11 @@ public class PlayerMovement : MonoBehaviour
                     PlayerController.Instance.animator.SetTrigger("swipeRight");
                 }
                 desiredLane++;
+                currentLane = desiredLane - 1;
                 if (desiredLane == 3)
                 {
                     desiredLane = 2;
+                    currentLane = 2;
                 }
             }
 
@@ -95,5 +100,15 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerController.Instance.animator.SetBool("Jump", true);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    public void BackToCurrentLane()
+    {
+        desiredLane = currentLane;
+    }
+
+    public void Bounce()
+    {
+        rb.AddForce(Vector3.up * 30, ForceMode.Impulse);
     }
 }

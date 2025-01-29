@@ -8,6 +8,8 @@ TagManager:
   - Barrier
   - Coin
   - Obstacle
+  - Bridge
+  - Bounce
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
