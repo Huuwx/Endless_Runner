@@ -541,7 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b4106f244321d44ae78a204dea7cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lane: {fileID: 0}
   laneDistance: 3
   speed: 15
   jumpForce: 17
@@ -2546,7 +2545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magnet: {fileID: 6577872335705549609}
-  timeToUse: 5
+  magnetController: {fileID: 6577872335705549610}
 --- !u!1001 &1453711205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4059,6 +4058,8 @@ MonoBehaviour:
   target: {fileID: 287636731}
   PointCheck: {fileID: 1053418838}
   sizePointCheck: {x: 10, y: 35, z: 12}
+  useTimeMax: 5
+  useTimeCounter: 0
 --- !u!95 &6577872335705549611
 Animator:
   serializedVersion: 5

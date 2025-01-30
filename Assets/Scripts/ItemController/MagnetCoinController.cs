@@ -8,12 +8,26 @@ public class MagnetCoinController : MonoBehaviour
     public GameObject PointCheck;
     public Vector3 sizePointCheck;
 
-    
+    [SerializeField] private float useTimeMax;
+    public float useTimeCounter;
+
+    private void Awake()
+    {
+        useTimeCounter = 0;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        CheckCoin();
+        if (useTimeCounter > 0)
+        {
+            useTimeCounter -= Time.deltaTime;
+            CheckCoin();
+        }
+        else
+        {
+            ItemController.Instance.OutOfTimeToUseMagnet();
+        }
     }
 
     public void CheckCoin()
@@ -31,5 +45,10 @@ public class MagnetCoinController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(PointCheck.transform.position, sizePointCheck);
+    }
+
+    public void ResetUseTime()
+    {
+        useTimeCounter = useTimeMax;
     }
 }

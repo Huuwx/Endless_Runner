@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
 
-    public GameObject lane;
-
     private int currentLane = 1;
     private int desiredLane = 1;
     public float laneDistance = 3;

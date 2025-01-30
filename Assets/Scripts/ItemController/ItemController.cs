@@ -8,7 +8,7 @@ public class ItemController : MonoBehaviour
     public static ItemController Instance { get { return instance; } }
 
     [SerializeField] GameObject magnet;
-    [SerializeField] private float timeToUse;
+    [SerializeField] MagnetCoinController magnetController;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +23,25 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    public IEnumerator ActiveMagnet()
+    public void UseTime()
     {
         magnet.SetActive(true);
-        yield return new WaitForSeconds(timeToUse);
+    }
+
+    public void ResetUseMagnetTime()
+    {
+        magnetController.ResetUseTime();
+    }
+
+    public void OutOfTimeToUseMagnet()
+    {
         magnet.SetActive(false);
     }
+
+    //public IEnumerator ActiveMagnet()
+    //{
+    //    magnet.SetActive(true);
+    //    yield return new WaitForSeconds(timeToUse);
+    //    magnet.SetActive(false);
+    //}
 }
