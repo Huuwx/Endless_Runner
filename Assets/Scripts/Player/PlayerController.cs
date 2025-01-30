@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack");
             collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
             collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
+            StartCoroutine(ItemController.Instance.ActiveMagnet());
         }
         else if (collision.gameObject.CompareTag("Bridge"))
         {
