@@ -3784,28 +3784,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
   m_PrefabInstance: {fileID: 2123794238}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &94490119989747323
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7015954537528378602}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4229935681835978768, guid: 78e2c0b05911fbe42a74f8469e2fddd8, type: 3}
 --- !u!23 &1000649290178312127
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4118,7 +4096,7 @@ GameObject:
   - component: {fileID: 7644435776844537424}
   - component: {fileID: 6753611923131208181}
   - component: {fileID: 8817292752728679743}
-  - component: {fileID: 94490119989747323}
+  - component: {fileID: 8817292752728679744}
   m_Layer: 0
   m_Name: floor_wood_large
   m_TagString: Ground
@@ -4183,6 +4161,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8817292752728679744
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015954537528378602}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 0.15000065, z: 4}
+  m_Center: {x: 0, y: -0.025000006, z: 0}
 --- !u!23 &9024017385143802829
 MeshRenderer:
   m_ObjectHideFlags: 0

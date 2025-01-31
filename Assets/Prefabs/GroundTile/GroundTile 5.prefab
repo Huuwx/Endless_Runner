@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709c728938e6fe849815e1e045c0971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spikeTrapController: []
+  cannonController: []
 --- !u!1 &3206470215505002206
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +245,7 @@ GameObject:
   - component: {fileID: 4376673626299390408}
   - component: {fileID: 797923200023025261}
   - component: {fileID: 3239844764400132775}
-  - component: {fileID: 6333432082370107875}
+  - component: {fileID: 7114600159176741338}
   m_Layer: 0
   m_Name: floor_wood_large
   m_TagString: Ground
@@ -316,8 +318,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6333432082370107875
-MeshCollider:
+--- !u!65 &7114600159176741338
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -334,10 +336,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4229935681835978768, guid: 78e2c0b05911fbe42a74f8469e2fddd8, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 4, y: 0.15000065, z: 4}
+  m_Center: {x: 0, y: -0.025000006, z: 0}
 --- !u!1 &6656562420141421598
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +383,7 @@ GameObject:
   - component: {fileID: 6098776801982931664}
   - component: {fileID: 7737250775116494677}
   - component: {fileID: 6424536932705530074}
-  - component: {fileID: 5918996314743156551}
+  - component: {fileID: 6961145094301262394}
   m_Layer: 0
   m_Name: floor_wood_large (1)
   m_TagString: Ground
@@ -455,8 +456,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5918996314743156551
-MeshCollider:
+--- !u!65 &6961145094301262394
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -473,10 +474,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4229935681835978768, guid: 78e2c0b05911fbe42a74f8469e2fddd8, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 4, y: 0.15000065, z: 4}
+  m_Center: {x: 0, y: -0.025000006, z: 0}
 --- !u!1 &8489860420886705831
 GameObject:
   m_ObjectHideFlags: 0
