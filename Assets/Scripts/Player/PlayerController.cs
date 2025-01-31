@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         isAlive = false;
+        SoundController.Instance.PlayOneShot(SoundController.Instance.death);
         animator.SetTrigger("Death");
         GameOver();
     }
@@ -64,11 +65,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            SoundController.Instance.PlayOneShot(SoundController.Instance.jump_land);
             animator.SetBool("Jump", false);
             isGrounded = true;
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
+            SoundController.Instance.PlayOneShot(SoundController.Instance.atk_Sword);
             animator.SetTrigger("Attack");
             collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
             collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Bounce"))
         {
+            SoundController.Instance.PlayOneShot(SoundController.Instance.bound);
             Animator Banimator = collision.gameObject.GetComponent<Animator>();
             Banimator.SetTrigger("Activate");
             playerMovement.Bounce();

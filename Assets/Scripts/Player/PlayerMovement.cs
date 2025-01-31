@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (PlayerController.Instance.GetIsGrounded())
                 {
+                    SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
                     PlayerController.Instance.animator.SetTrigger("swipeLeft");
                 }
                 desiredLane--;
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (PlayerController.Instance.GetIsGrounded())
                 {
+                    SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
                     PlayerController.Instance.animator.SetTrigger("swipeRight");
                 }
                 desiredLane++;
@@ -96,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.jump);
         PlayerController.Instance.animator.SetBool("Jump", true);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
