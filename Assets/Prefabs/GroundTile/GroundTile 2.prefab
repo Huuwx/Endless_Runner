@@ -650,6 +650,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6223136946557744980, guid: b043f7ca3df394d4d9a5adc37d830fad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f10b929aaf965484baf5478fd8085936, type: 2}
+    - target: {fileID: -6223136946557744980, guid: b043f7ca3df394d4d9a5adc37d830fad, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d923ed6c9930b743835f1e042f4185a, type: 2}
     - target: {fileID: 87068311187631717, guid: b043f7ca3df394d4d9a5adc37d830fad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 89.98021
@@ -727,8 +735,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.0958364, y: 2.4427214, z: 2.0273466}
-  m_Center: {x: -0.00000019868214, y: 0.7213604, z: -0.034244657}
+  m_Size: {x: 3.9052923, y: 2.3980677, z: 2.0273466}
+  m_Center: {x: 0.08224805, y: 0.6990323, z: -0.034244657}
 --- !u!1001 &557647059968127816
 PrefabInstance:
   m_ObjectHideFlags: 0

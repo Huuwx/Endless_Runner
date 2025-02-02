@@ -18,7 +18,7 @@ public class CannonController : BarrierController
     {
         if (isActive)
         {
-            Vector3 forwardMove = transform.right * -10 * Time.fixedDeltaTime;
+            Vector3 forwardMove = transform.right * -20 * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + forwardMove);
         }
     }

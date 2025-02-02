@@ -29,7 +29,8 @@ public class GroundTile : MonoBehaviour
             }
             if(cannonController != null)
             {
-                foreach(var controller in cannonController)
+                Debug.Log("va");
+                foreach (var controller in cannonController)
                 {
                     controller.isActive = true;
                 }
