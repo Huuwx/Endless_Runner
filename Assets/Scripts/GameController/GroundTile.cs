@@ -7,14 +7,14 @@ public class GroundTile : MonoBehaviour
     [SerializeField] List<SpikeTrapController> spikeTrapController;
     [SerializeField] List<CannonController> cannonController;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            GroundSpawner.Instance.SpawnTile();
-            Destroy(gameObject, 2);
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        GroundSpawner.Instance.SpawnTile();
+    //        Destroy(gameObject, 2);
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,7 +29,6 @@ public class GroundTile : MonoBehaviour
             }
             if(cannonController != null)
             {
-                Debug.Log("va");
                 foreach (var controller in cannonController)
                 {
                     controller.isActive = true;

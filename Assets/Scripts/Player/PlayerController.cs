@@ -84,7 +84,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Bounce"))
         {
-            Debug.Log("Bounce");
             SoundController.Instance.PlayOneShot(SoundController.Instance.bound);
             Animator Banimator = collision.gameObject.GetComponent<Animator>();
             Banimator.SetTrigger("Activate");

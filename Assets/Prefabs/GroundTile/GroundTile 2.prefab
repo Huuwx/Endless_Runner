@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4471507943402213445}
   - component: {fileID: 8309721314480746011}
   - component: {fileID: 7901493993710181029}
+  - component: {fileID: 2547337894370531817}
   m_Layer: 0
   m_Name: GroundTile 2
   m_TagString: Untagged
@@ -75,6 +76,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spikeTrapController: []
   cannonController: []
+--- !u!114 &2547337894370531817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026619498105937804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e7fcefd08ee524a8e182c79614a36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
 --- !u!1 &3206470215505002206
 GameObject:
   m_ObjectHideFlags: 0
