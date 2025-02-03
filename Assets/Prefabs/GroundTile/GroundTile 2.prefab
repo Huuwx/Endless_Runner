@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4471507943402213445}
-  - component: {fileID: 8309721314480746011}
-  - component: {fileID: 7901493993710181029}
   - component: {fileID: 2547337894370531817}
   m_Layer: 0
   m_Name: GroundTile 2
@@ -41,41 +39,6 @@ Transform:
   - {fileID: 1562253659742823576}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8309721314480746011
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026619498105937804}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10.041369, y: 6.8533564, z: 40.269768}
-  m_Center: {x: 0.028761387, y: 2.9266782, z: 10.098133}
---- !u!114 &7901493993710181029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026619498105937804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709c728938e6fe849815e1e045c0971f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spikeTrapController: []
-  cannonController: []
 --- !u!114 &2547337894370531817
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -872,6 +872,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   movingSpeed: 15
   groundSize: 30
+  groundSpawner: {fileID: 0}
 --- !u!1 &356466761
 GameObject:
   m_ObjectHideFlags: 0
@@ -5433,27 +5434,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1106230317762830865
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924265378791330694}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10.041369, y: 6.8533564, z: 20.408508}
-  m_Center: {x: 0.028761387, y: 2.9266782, z: 5.1972227}
 --- !u!4 &1177694346515130467
 Transform:
   m_ObjectHideFlags: 0
@@ -5470,20 +5450,6 @@ Transform:
   - {fileID: 1053418839}
   m_Father: {fileID: 1429541840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1274430676571182767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924265378791330694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709c728938e6fe849815e1e045c0971f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spikeTrapController: []
-  cannonController: []
 --- !u!4 &2020165794247684472
 Transform:
   m_ObjectHideFlags: 0
@@ -5681,8 +5647,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4757470085953297487}
-  - component: {fileID: 1106230317762830865}
-  - component: {fileID: 1274430676571182767}
   - component: {fileID: 6924265378791330695}
   m_Layer: 0
   m_Name: GroundTile
