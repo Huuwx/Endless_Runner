@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - Bridge
   - Bounce
+  - X2
   layers:
   - Default
   - TransparentFX

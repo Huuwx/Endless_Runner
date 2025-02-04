@@ -52,9 +52,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateCoin()
+    public void UpdateCoin(int point)
     {
-        coinNumber++;
+        coinNumber += point;
         coinNumberTxt.text = coinNumber.ToString();
     }
 

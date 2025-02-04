@@ -5,6 +5,12 @@ using UnityEngine;
 public class CoinController : MonoBehaviour
 {
     public float rotationSpeed = 100f;
+    public int point = 1;
+
+    private void Start()
+    {
+        point = 1;
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,7 +23,7 @@ public class CoinController : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             SoundController.Instance.PlayOneShot(SoundController.Instance.pickUpCoin);
-            GameManager.Instance.UpdateCoin();
+            GameManager.Instance.UpdateCoin(point);
             Destroy(gameObject);
         }
     }

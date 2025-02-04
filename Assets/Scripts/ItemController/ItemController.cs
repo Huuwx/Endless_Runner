@@ -10,6 +10,8 @@ public class ItemController : MonoBehaviour
     [SerializeField] GameObject magnet;
     [SerializeField] MagnetCoinController magnetController;
 
+    [SerializeField] X2CoinItemController x2CoinItemController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +25,14 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    public void UseTime()
+    public void MagnetUseTime()
     {
         magnet.SetActive(true);
+    }
+
+    public void ResetX2UseTime()
+    {
+        x2CoinItemController.ResetUseTime();
     }
 
     public void ResetUseMagnetTime()
