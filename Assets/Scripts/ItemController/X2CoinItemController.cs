@@ -22,6 +22,7 @@ public class X2CoinItemController : MonoBehaviour
             foreach (GameObject coinObject in coinObjects)
             {
                 CoinController coinController = coinObject.GetComponent<CoinController>();
+                coinController.animator.SetBool("X2", true);
                 coinController.point = 2;
             }
         }
@@ -30,6 +31,7 @@ public class X2CoinItemController : MonoBehaviour
             foreach (GameObject coinObject in coinObjects)
             {
                 CoinController coinController = coinObject.GetComponent<CoinController>();
+                coinController.animator.SetBool("X2", false);
                 coinController.point = 1;
             }
         }

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
+    public Animator animator;
+
     public float rotationSpeed = 100f;
     public int point = 1;
 
     private void Start()
     {
         point = 1;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

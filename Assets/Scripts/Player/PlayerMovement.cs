@@ -63,6 +63,14 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
+            if (SwipeManager.swipeDown)
+            {
+                if (PlayerController.Instance.GetIsGrounded())
+                {
+                    PlayerController.Instance.animator.SetTrigger("SwipeDown");
+                }
+            }
+
             Vector3 targetPos = transform.position.z * transform.forward + transform.position.y * transform.up;
 
             if(desiredLane == 0)

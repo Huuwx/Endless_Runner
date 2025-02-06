@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class CannonController : BarrierController
 {
-    private Rigidbody rb;
-
     public bool isActive = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     void FixedUpdate()
     {
         if (isActive)
         {
             transform.Translate(Vector3.back * 20 * Time.deltaTime, Space.World);
-            //Vector3 forwardMove = transform.right * -30 * Time.fixedDeltaTime;
-            //rb.MovePosition(rb.position + forwardMove);
         }
     }
 
