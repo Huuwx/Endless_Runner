@@ -93,7 +93,5 @@ public class GroundTileSpawner : MonoBehaviour
 
         lastGround = ground.gameObject;
         lastGround.transform.position = newPos;
-
-        Destroy(thisGround);
     }
 }
