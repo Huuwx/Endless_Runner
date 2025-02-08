@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
       objectReference: {fileID: 0}
+    - target: {fileID: -4608274760846181936, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -4582853246459673731, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -4.2313646e-13
@@ -63,6 +67,14 @@ PrefabInstance:
     - target: {fileID: -4582853246459673731, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.0441832e-20
+      objectReference: {fileID: 0}
+    - target: {fileID: -4075916503123163478, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2232606120866082343, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -748823479892625975, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -77,8 +89,20 @@ PrefabInstance:
       value: Hazard_SpikeTrap
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
       propertyPath: m_TagString
       value: Barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936097611402307293, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907053214580753034, guid: dc1f187f329b08849bd741e796395c3b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

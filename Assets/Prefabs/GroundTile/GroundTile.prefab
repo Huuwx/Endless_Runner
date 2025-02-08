@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 7499328681377382724}
   - component: {fileID: 6898718748562869985}
   - component: {fileID: 8672203829270952491}
-  - component: {fileID: 5288457345970371290}
+  - component: {fileID: 2556834843547608149}
   m_Layer: 0
   m_Name: floor_wood_large
   m_TagString: Ground
@@ -390,8 +390,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5288457345970371290
-BoxCollider:
+--- !u!64 &2556834843547608149
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -408,9 +408,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4, y: 0.15000065, z: 4}
-  m_Center: {x: 0, y: -0.025000006, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4229935681835978768, guid: 78e2c0b05911fbe42a74f8469e2fddd8, type: 3}
 --- !u!1 &8489860420886705831
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +456,7 @@ GameObject:
   - component: {fileID: 4735863436482342757}
   - component: {fileID: 8767363794419382267}
   - component: {fileID: 7933263478898747131}
-  - component: {fileID: 7424458061678420375}
+  - component: {fileID: 4808520621406761176}
   m_Layer: 0
   m_Name: floor_wood_large (1)
   m_TagString: Ground
@@ -528,8 +529,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7424458061678420375
-BoxCollider:
+--- !u!64 &4808520621406761176
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -546,9 +547,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4, y: 0.15000065, z: 4}
-  m_Center: {x: 0, y: -0.025000006, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4229935681835978768, guid: 78e2c0b05911fbe42a74f8469e2fddd8, type: 3}
 --- !u!1001 &552116526369966368
 PrefabInstance:
   m_ObjectHideFlags: 0
