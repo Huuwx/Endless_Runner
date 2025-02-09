@@ -918,7 +918,7 @@ MonoBehaviour:
   axis: 3
   moveDirection: {x: -1, y: 0, z: 0}
   movingSpeed: 15
-  maxSpeed: 25
+  maxSpeed: 20
   groundSize: 40
   groundSpawner: {fileID: 0}
 --- !u!1 &356466761
