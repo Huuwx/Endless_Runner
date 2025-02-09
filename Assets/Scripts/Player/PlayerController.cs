@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
+            playerMovement.ResetCollider();
             SoundController.Instance.PlayOneShot(SoundController.Instance.atk_Sword);
             animator.SetTrigger("Attack");
             collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);

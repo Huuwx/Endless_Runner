@@ -12,6 +12,10 @@ public class RunnerGroundTile : MonoBehaviour
     {
         if (PlayerController.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
         {
+            if(spawner.movingSpeed < spawner.maxSpeed)
+            {
+                spawner.movingSpeed += 0.0001f * Time.deltaTime;
+            }
             transform.Translate(spawner.moveDirection * spawner.movingSpeed * Time.deltaTime);
         }
     }

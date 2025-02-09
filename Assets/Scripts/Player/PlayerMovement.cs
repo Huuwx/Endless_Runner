@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private int desiredLane = 1;
     public float laneDistance = 3;
 
-    [SerializeField] float speed = 20f;
+    [SerializeField] float speed = 0f;
     //Jump
     [SerializeField] float jumpForce = 100f;
 
@@ -29,8 +29,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (PlayerController.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
         {
+            Vector3 forwardMove = transform.forward * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + forwardMove);
+
             if (SwipeManager.swipeUp && PlayerController.Instance.GetIsGrounded() == true)
             {
+                ResetCollider();
                 Jump();
             }
 
@@ -38,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (PlayerController.Instance.GetIsGrounded())
                 {
+                    ResetCollider();
                     SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
                     PlayerController.Instance.animator.SetTrigger("swipeLeft");
                 }
@@ -53,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (PlayerController.Instance.GetIsGrounded())
                 {
+                    ResetCollider();
                     SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
                     PlayerController.Instance.animator.SetTrigger("swipeRight");
                 }
@@ -97,18 +103,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PlayerController.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
-        {
-            Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + forwardMove);
-        }
-
-        if (!PlayerController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
-        {
-            PlayerController.Instance.animator.SetBool("isSliding", false);
-            boxCollider.size = new Vector3(1, 2.5f, 1);
-            boxCollider.center = new Vector3(0, 1.1f, 0);
-        }
+        //if (!PlayerController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        //{
+        //    PlayerController.Instance.animator.SetBool("isSliding", false);
+        //    boxCollider.size = new Vector3(1, 2.5f, 1);
+        //    boxCollider.center = new Vector3(0, 1.1f, 0);
+        //}
     }
 
     private void Jump()
@@ -126,6 +126,13 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        boxCollider.size = new Vector3(1, 2.5f, 1);
+        boxCollider.center = new Vector3(0, 1.1f, 0);
+        PlayerController.Instance.animator.SetBool("isSliding", false);
+    }
+
+    public void ResetCollider()
+    {
         boxCollider.size = new Vector3(1, 2.5f, 1);
         boxCollider.center = new Vector3(0, 1.1f, 0);
         PlayerController.Instance.animator.SetBool("isSliding", false);

@@ -6,7 +6,7 @@ public class CannonController : BarrierController
 {
     public bool isActive = false;
 
-    void FixedUpdate()
+    void Update()
     {
         if (isActive)
         {

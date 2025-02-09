@@ -16,7 +16,9 @@ public class GroundTileSpawner : MonoBehaviour
 
     [HideInInspector]
     public Vector3 moveDirection = new Vector3(-1, 0, 0);
-    public float movingSpeed = 1;
+
+    public float movingSpeed = 15f;
+    public float maxSpeed = 25f;
 
 
     public float groundSize = 30;
