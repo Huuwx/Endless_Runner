@@ -12,6 +12,9 @@ public class ItemController : MonoBehaviour
 
     [SerializeField] X2CoinItemController x2CoinItemController;
 
+    [SerializeField] GameObject magicShield;
+    [SerializeField] MagicShieldController magicShieldController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,14 +28,10 @@ public class ItemController : MonoBehaviour
         }
     }
 
+    // Coin Magnet
     public void MagnetUseTime()
     {
         magnet.SetActive(true);
-    }
-
-    public void ResetX2UseTime()
-    {
-        x2CoinItemController.ResetUseTime();
     }
 
     public void ResetUseMagnetTime()
@@ -45,10 +44,20 @@ public class ItemController : MonoBehaviour
         magnet.SetActive(false);
     }
 
-    //public IEnumerator ActiveMagnet()
-    //{
-    //    magnet.SetActive(true);
-    //    yield return new WaitForSeconds(timeToUse);
-    //    magnet.SetActive(false);
-    //}
+    // X2
+    public void ResetX2UseTime()
+    {
+        x2CoinItemController.ResetUseTime();
+    }
+
+    // Magic Shield
+    public void MagicShieldUseTime()
+    {
+        magicShield.SetActive(true);
+    }
+
+    public void ResetMagicShieldUseTime()
+    {
+        magicShieldController.ResetUseTime();
+    }
 }

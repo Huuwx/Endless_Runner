@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagnetCoinController : MonoBehaviour
+public class MagnetCoinController : Item
 {
     public Transform target;
     public GameObject PointCheck;
     public Vector3 sizePointCheck;
 
-    [SerializeField] private float useTimeMax;
-    public float useTimeCounter;
-
-    private void Awake()
+    protected override void Awake()
     {
-        useTimeCounter = 0;
+        base.Awake();
     }
 
     // Update is called once per frame
@@ -47,8 +44,8 @@ public class MagnetCoinController : MonoBehaviour
         Gizmos.DrawWireCube(PointCheck.transform.position, sizePointCheck);
     }
 
-    public void ResetUseTime()
+    public override void ResetUseTime()
     {
-        useTimeCounter = useTimeMax;
+        base.ResetUseTime();
     }
 }

@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class X2CoinItemController : MonoBehaviour
+public class X2CoinItemController : Item
 {
-    [SerializeField] private float useTimeMax = 5;
-    public float useTimeCounter;
-
-    private void Awake()
+    protected override void Awake()
     {
-        useTimeCounter = 0;
+        base.Awake();
     }
 
     // Update is called once per frame
@@ -37,8 +34,8 @@ public class X2CoinItemController : MonoBehaviour
         }
     }
 
-    public void ResetUseTime()
+    public override void ResetUseTime()
     {
-        useTimeCounter = useTimeMax;
+        base.ResetUseTime();
     }
 }

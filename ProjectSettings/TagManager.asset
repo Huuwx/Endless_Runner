@@ -11,6 +11,7 @@ TagManager:
   - Bridge
   - Bounce
   - X2
+  - Shield
   layers:
   - Default
   - TransparentFX
