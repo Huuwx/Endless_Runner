@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class X2CoinItemController : Item
 {
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -32,10 +27,5 @@ public class X2CoinItemController : Item
                 coinController.point = 1;
             }
         }
-    }
-
-    public override void ResetUseTime()
-    {
-        base.ResetUseTime();
     }
 }

@@ -108,4 +108,19 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Shield"))
+        {
+            ItemController.Instance.MagicShieldUseTime();
+            ItemController.Instance.ResetMagicShieldUseTime();
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("X2"))
+        {
+            ItemController.Instance.ResetX2UseTime();
+            Destroy(other.gameObject);
+        }
+    }
 }

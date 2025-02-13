@@ -8,11 +8,6 @@ public class MagnetCoinController : Item
     public GameObject PointCheck;
     public Vector3 sizePointCheck;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -42,10 +37,5 @@ public class MagnetCoinController : Item
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(PointCheck.transform.position, sizePointCheck);
-    }
-
-    public override void ResetUseTime()
-    {
-        base.ResetUseTime();
     }
 }

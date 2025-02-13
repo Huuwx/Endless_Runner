@@ -41,6 +41,7 @@ public class ItemController : MonoBehaviour
 
     public void OutOfTimeToUseMagnet()
     {
+        magnetController.ClearUseTime();
         magnet.SetActive(false);
     }
 
@@ -59,5 +60,11 @@ public class ItemController : MonoBehaviour
     public void ResetMagicShieldUseTime()
     {
         magicShieldController.ResetUseTime();
+    }
+
+    public void OutOfTimeToUseMagicShield()
+    {
+        magicShieldController.ClearUseTime();
+        magicShield.SetActive(false);
     }
 }

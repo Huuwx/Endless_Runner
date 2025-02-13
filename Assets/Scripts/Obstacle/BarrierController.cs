@@ -14,4 +14,12 @@ public class BarrierController : MonoBehaviour
         }
     }
 
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Shield")
+        {
+            Destroy(gameObject);
+            ItemController.Instance.OutOfTimeToUseMagicShield();
+        }
+    }
 }

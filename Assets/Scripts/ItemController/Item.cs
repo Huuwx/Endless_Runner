@@ -16,4 +16,9 @@ public class Item : MonoBehaviour
     {
         useTimeCounter = useTimeMax;
     }
+
+    public virtual void ClearUseTime()
+    {
+        useTimeCounter = 0;
+    }
 }

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MagicShieldController : Item
 {
-    protected override void Awake()
+    private void Update()
     {
-        base.Awake();
-    }
-
-    public override void ResetUseTime()
-    {
-        base.ResetUseTime();
+        if(useTimeCounter > 0)
+        {
+            useTimeCounter -= Time.deltaTime;
+        }
+        else
+        {
+            ItemController.Instance.OutOfTimeToUseMagicShield();
+        }
     }
 }

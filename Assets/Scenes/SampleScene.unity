@@ -2762,7 +2762,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.29
+  m_Radius: 0.35
   m_Center: {x: 0, y: 0.06, z: 0}
 --- !u!23 &1141317669
 MeshRenderer:
@@ -3208,7 +3208,7 @@ MonoBehaviour:
   magnet: {fileID: 6577872335705549609}
   magnetController: {fileID: 6577872335705549610}
   x2CoinItemController: {fileID: 260648495}
-  magicShield: {fileID: 0}
+  magicShield: {fileID: 1141317666}
   magicShieldController: {fileID: 1141317671}
 --- !u!1 &1445319678
 GameObject:
