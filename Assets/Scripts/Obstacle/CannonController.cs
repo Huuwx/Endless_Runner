@@ -18,10 +18,19 @@ public class CannonController : BarrierController
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerController.Instance.Die();
-            collision.rigidbody.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
-            collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
-            isActive = false;
+            if (PlayerController.Instance.GetImmortal())
+            {
+                ParticleSystemController.Instance.explosion.Play();
+                Destroy(gameObject);
+                ItemController.Instance.OutOfTimeToUseMagicShield();
+            }
+            else
+            {
+                PlayerController.Instance.Die();
+                collision.rigidbody.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
+                collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
+                isActive = false;
+            }
         }
     }
 }

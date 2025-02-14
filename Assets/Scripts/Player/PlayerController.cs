@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
+    private bool immortal = false;
+    public void SetImmortal(bool immortal) { this.immortal = immortal; }
+    public bool GetImmortal() { return immortal; }
+
     private bool isAlive = true;
     public void SetIsAlive(bool isAlive) { this.isAlive = isAlive; }
     public bool GetIsAlive() { return isAlive; }
@@ -37,6 +41,9 @@ public class PlayerController : MonoBehaviour
     {
         animator = gameObject.GetComponentInChildren<Animator>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
+        immortal = false;
+        isAlive = true;
+        isGrounded = false;
     }
 
     // Update is called once per frame
