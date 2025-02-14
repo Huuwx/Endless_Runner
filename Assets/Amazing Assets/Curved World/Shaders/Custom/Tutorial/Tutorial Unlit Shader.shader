@@ -5,6 +5,8 @@ Shader "Amazing Assets/Curved World/Tutorial/Unlit Shader"
         //Paste Curved World material property here////////////////////////////////////
         [CurvedWorldBendSettings] _CurvedWorldBendSettings("2|1|1", Vector) = (0, 0, 0, 0)
 
+        [CurvedWorldBendSettings] _CurvedWorldBendSettings("2|2|1", Vector) = (0, 0, 0, 0)
+
         _MainTex ("Texture", 2D) = "white" {}
     }
 
@@ -26,6 +28,12 @@ Shader "Amazing Assets/Curved World/Tutorial/Unlit Shader"
 			//Paste Curved World definitions and keywords here/////////////////////////
             #define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
             #define CURVEDWORLD_BEND_ID_1
+            #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+            #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+            #include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
+
+            #define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
+            #define CURVEDWORLD_BEND_ID_2
             #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
             #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             #include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
@@ -53,6 +61,14 @@ Shader "Amazing Assets/Curved World/Tutorial/Unlit Shader"
                 #else
                 CURVEDWORLD_TRANSFORM_VERTEX(v.vertex)
                 #endif
+                #endif
+
+                #if defined(CURVEDWORLD_IS_INSTALLED) && !defined(CURVEDWORLD_DISABLED_ON)
+                   #ifdef CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+                      CURVEDWORLD_TRANSFORM_VERTEX_AND_NORMAL(v.vertex, v.normal, v.tangent)
+                   #else
+                      CURVEDWORLD_TRANSFORM_VERTEX(v.vertex)
+                   #endif
                 #endif
 
                 o.vertex = UnityObjectToClipPos(v.vertex);

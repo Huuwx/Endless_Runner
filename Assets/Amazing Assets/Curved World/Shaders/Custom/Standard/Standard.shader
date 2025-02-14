@@ -3,7 +3,7 @@ Shader "Amazing Assets/Curved World/Standard"
     Properties 
     {
 
-[HideInInspector][CurvedWorldBendSettings]	  _CurvedWorldBendSettings("0,2|1|1", Vector) = (0, 0, 0, 0)
+[HideInInspector][CurvedWorldBendSettings]	  _CurvedWorldBendSettings("0,2|1,2|1", Vector) = (0, 0, 0, 0)
 
 
 [HideInInspector][MaterialEnum(Front,2,Back,1,Both,0)] _Cull("Face Cull", Int) = 0
@@ -96,7 +96,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             
@@ -141,7 +141,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             
@@ -179,7 +179,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             
@@ -222,7 +222,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             
@@ -286,7 +286,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 
 
@@ -321,7 +321,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 
 
@@ -367,7 +367,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             
@@ -408,7 +408,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
 
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             
@@ -440,7 +440,7 @@ Shader "Amazing Assets/Curved World/Standard"
 
             
 #pragma shader_feature_local CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_Z_POSITIVE
-#define CURVEDWORLD_BEND_ID_1
+#pragma shader_feature_local CURVEDWORLD_BEND_ID_1 CURVEDWORLD_BEND_ID_2
 #pragma shader_feature_local CURVEDWORLD_DISABLED_ON
 #pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
             

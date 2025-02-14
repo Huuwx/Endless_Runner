@@ -912,8 +912,8 @@ MonoBehaviour:
   - {fileID: 2026619498105937804, guid: ea4d7de656dbfb04996d494c0ea40d15, type: 3}
   - {fileID: 2026619498105937804, guid: 04f43ef208719e645bcc2ba153e61e62, type: 3}
   - {fileID: 2026619498105937804, guid: 303929c3ae6b6444ab21138275ebc4ac, type: 3}
-  - {fileID: 2026619498105937804, guid: a4e872b6fac3cc04d96fe5d9701352ae, type: 3}
   - {fileID: 2026619498105937804, guid: ac487b7c4af24d44d8fce7a8d6c8fdaa, type: 3}
+  - {fileID: 2026619498105937804, guid: 0eeb70293d8ad0d4c82a99483139264c, type: 3}
   initialSpawnCount: 15
   destoryZone: 80
   axis: 3
