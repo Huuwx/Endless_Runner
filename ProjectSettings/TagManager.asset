@@ -12,6 +12,7 @@ TagManager:
   - Bounce
   - X2
   - Shield
+  - TurnGround
   layers:
   - Default
   - TransparentFX
