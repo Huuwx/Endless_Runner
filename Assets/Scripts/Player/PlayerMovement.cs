@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     //Jump
     [SerializeField] float jumpForce = 100f;
 
+    [SerializeField] LayerMask turnLayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (PlayerController.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
         {
+            CheckTurn();
+
             Vector3 forwardMove = transform.forward * speed * Time.deltaTime;
             rb.MovePosition(rb.position + forwardMove);
 
@@ -109,6 +113,28 @@ public class PlayerMovement : MonoBehaviour
         //    boxCollider.size = new Vector3(1, 2.5f, 1);
         //    boxCollider.center = new Vector3(0, 1.1f, 0);
         //}
+    }
+
+    private Vector3? CheckTurn()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
+        if (hitColliders.Length != 0)
+        {
+            TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
+            if (SwipeManager.swipeRight)
+            {
+                transform.position = turnGroundController.pivot.position;
+                //transform.rotation = Quaternion.Euler(0, 90f, 0);
+                turnGroundController.spawner.moveDirection = new Vector3(-1, 0, 0);
+            }
+            else if (SwipeManager.swipeLeft)
+            {
+                transform.position = turnGroundController.pivot.position;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
+            }
+        }
+        return null;
     }
 
     private void Jump()

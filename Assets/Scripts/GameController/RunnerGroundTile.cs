@@ -7,6 +7,8 @@ public class RunnerGroundTile : MonoBehaviour
 {
     public GroundTileSpawner spawner;
 
+    public Transform pivot1;
+    public Transform pivot2;
 
     void Update()
     {

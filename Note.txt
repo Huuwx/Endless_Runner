@@ -1,5 +1,6 @@
 weapons of player in Rig->root->hips->spine->chest->upperarm....
 
-Note: thu doi cach spawn bang gameobject nextspawner cho nga re va xoay duong theo transform cua nextspawner.
+Note: 	+ thu doi cach spawn bang gameobject nextspawner cho nga re va xoay duong theo transform cua nextspawner. (done)
+	+ them 3 gameobject lane vao cac groundTile va doi cach di chuyen giua cac lane bang cach di chuyen vao cac gameobject lane do
 
 Bugs: none

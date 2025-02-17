@@ -603,6 +603,9 @@ MonoBehaviour:
   laneDistance: 3
   speed: 1
   jumpForce: 17
+  turnLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &287636735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10701,6 +10704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 346266425}
+  pivot1: {fileID: 0}
+  pivot2: {fileID: 0}
 --- !u!1 &7015954537528378602
 GameObject:
   m_ObjectHideFlags: 0
