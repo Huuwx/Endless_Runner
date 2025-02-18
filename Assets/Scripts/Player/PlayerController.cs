@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -5)
-        {
-            Die();
-        }
+        //if(transform.position.y < -5)
+        //{
+        //    Die();
+        //}
     }
 
     public void Die()

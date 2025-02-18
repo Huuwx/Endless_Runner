@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     //Jump
     [SerializeField] float jumpForce = 100f;
 
+    [SerializeField] List<GameObject> Lane;
+
     [SerializeField] LayerMask turnLayer;
 
 
@@ -82,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 targetPos = transform.position.z * transform.forward + transform.position.y * transform.up;
 
+            Debug.Log(targetPos);
+
             if (desiredLane == 0)
             {
                 targetPos += Vector3.left * laneDistance;
@@ -91,17 +95,17 @@ public class PlayerMovement : MonoBehaviour
                 targetPos += Vector3.right * laneDistance;
             }
 
-            //transform.position = Vector3.Lerp(targetPos, targetPos, 80 * Time.deltaTime);
+            //transform.position = Vector3.Lerp(transform.position, targetPos, 80 * Time.deltaTime);
 
-            if (transform.position != targetPos)
-            {
-                Vector3 diff = targetPos - transform.position;
-                Vector3 moveDir = diff.normalized * 35 * Time.deltaTime;
-                if (moveDir.sqrMagnitude < diff.sqrMagnitude)
-                    rb.MovePosition(transform.position + moveDir);
-                else
-                    rb.MovePosition(targetPos);
-            }
+            //if (transform.position != targetPos)
+            //{
+            //    Vector3 diff = targetPos - transform.position;
+            //    Vector3 moveDir = diff.normalized * 35 * Time.deltaTime;
+            //    if (moveDir.sqrMagnitude < diff.sqrMagnitude)
+            //        rb.MovePosition(transform.position + moveDir);
+            //    else
+            //        rb.MovePosition(targetPos);
+            //}
         }
     }
 
@@ -121,17 +125,21 @@ public class PlayerMovement : MonoBehaviour
         if (hitColliders.Length != 0)
         {
             TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
-            if (SwipeManager.swipeRight)
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 transform.position = turnGroundController.pivot.position;
-                //transform.rotation = Quaternion.Euler(0, 90f, 0);
                 turnGroundController.spawner.moveDirection = new Vector3(-1, 0, 0);
+                transform.rotation = Quaternion.Euler(0, 90f, 0);
+                desiredLane = 1;
+                currentLane = 1;
             }
-            else if (SwipeManager.swipeLeft)
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 transform.position = turnGroundController.pivot.position;
-                transform.rotation = Quaternion.Euler(0, 0, 0);
                 turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                desiredLane = 1;
+                currentLane = 1;
             }
         }
         return null;
