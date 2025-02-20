@@ -20,12 +20,14 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] LayerMask turnLayer;
 
+    public bool isZPositive = true;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         boxCollider = rb.GetComponent<BoxCollider>();
+        isZPositive = true;
     }
 
     // Update is called once per frame
@@ -59,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
                     desiredLane = 0;
                     currentLane = 0;
                 }
+                StartCoroutine(Swipe(new Vector3(transform.position.x - laneDistance, transform.position.y, transform.position.z)));
             }
             else if (SwipeManager.swipeRight)
             {
@@ -75,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
                     desiredLane = 2;
                     currentLane = 2;
                 }
+                StartCoroutine(Swipe(new Vector3(transform.position.x + laneDistance, transform.position.y, transform.position.z)));
             }
 
             if (SwipeManager.swipeDown)
@@ -82,20 +86,43 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(Slide());
             }
 
-            Vector3 targetPos = transform.position.z * transform.forward + transform.position.y * transform.up;
+            //Vector3 targetPos = new Vector3(0, 0, 0);
 
-            Debug.Log(targetPos);
+            //if (isZPositive)
+            //{
+            //    targetPos = new Vector3(0, transform.position.y, transform.position.z);
+            //}
+            //else
+            //{
+            //    targetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            //}
 
-            if (desiredLane == 0)
-            {
-                targetPos += Vector3.left * laneDistance;
-            }
-            else if (desiredLane == 2)
-            {
-                targetPos += Vector3.right * laneDistance;
-            }
+            //Debug.Log(targetPos);
 
-            //transform.position = Vector3.Lerp(transform.position, targetPos, 80 * Time.deltaTime);
+            //if (isZPositive)
+            //{
+            //    if (desiredLane == 0)
+            //    {
+            //        targetPos += Vector3.left * laneDistance;
+            //    }
+            //    else if (desiredLane == 2)
+            //    {
+            //        targetPos += Vector3.right * laneDistance;
+            //    }
+            //}
+            //else
+            //{
+            //    if (desiredLane == 0)
+            //    {
+            //        targetPos += Vector3.back * laneDistance;
+            //    }
+            //    else if (desiredLane == 2)
+            //    {
+            //        targetPos += Vector3.forward * laneDistance;
+            //    }
+            //}
+
+            ////transform.position = Vector3.Lerp(transform.position, targetPos, 80 * Time.deltaTime);
 
             //if (transform.position != targetPos)
             //{
@@ -119,6 +146,17 @@ public class PlayerMovement : MonoBehaviour
         //}
     }
 
+    IEnumerator Swipe(Vector3 target)
+    {
+        while ((target - transform.position).sqrMagnitude > 0.01f)
+        {
+            transform.position = Vector3.Lerp(transform.position, target, 35 * Time.deltaTime);
+            yield return null; // Đợi 1 frame trước khi tiếp tục
+        }
+        transform.position = target; // Đảm bảo vị trí cuối cùng chính xác
+    }
+
+
     private Vector3? CheckTurn()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
@@ -127,6 +165,7 @@ public class PlayerMovement : MonoBehaviour
             TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                isZPositive = false;
                 transform.position = turnGroundController.pivot.position;
                 turnGroundController.spawner.moveDirection = new Vector3(-1, 0, 0);
                 transform.rotation = Quaternion.Euler(0, 90f, 0);
@@ -135,6 +174,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                isZPositive = true;
                 transform.position = turnGroundController.pivot.position;
                 turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
                 transform.rotation = Quaternion.Euler(0, 0, 0);

@@ -611,6 +611,7 @@ MonoBehaviour:
   turnLayer:
     serializedVersion: 2
     m_Bits: 256
+  isZPositive: 1
 --- !u!114 &287636735
 MonoBehaviour:
   m_ObjectHideFlags: 0
