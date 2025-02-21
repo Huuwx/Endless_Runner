@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Bridge"))
         {
-            playerMovement.BackToCurrentLane();
+            playerMovement.BackToOldLane();
         }
         else if (collision.gameObject.CompareTag("Bounce"))
         {
