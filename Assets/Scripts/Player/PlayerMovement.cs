@@ -22,11 +22,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask turnLayer;
 
     public bool isZPositive = true;
+    public bool canTurn = false;
 
     private void Awake()
     {
         center = 0;
         isZPositive = true;
+        canTurn = false;
     }
 
     // Start is called before the first frame update
@@ -49,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
             }
 
-            if (SwipeManager.swipeLeft)
+            if (SwipeManager.swipeLeft && !canTurn)
             {
                 if (PlayerController.Instance.GetIsGrounded())
                 {
@@ -65,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
                     oldLane = 0;
                 }
             }
-            else if (SwipeManager.swipeRight)
+            else if (SwipeManager.swipeRight && !canTurn)
             {
                 if (PlayerController.Instance.GetIsGrounded())
                 {
@@ -95,25 +97,12 @@ public class PlayerMovement : MonoBehaviour
 
                 if (desiredLane == 0)
                 {
-                    if (center >= 0)
-                    {
-                        targetPos += Vector3.left * laneDistance;
-                    }
-                    else
-                    {
-                        targetPos += Vector3.right * laneDistance;
-                    }
+
+                    targetPos += Vector3.left * laneDistance;
                 }
                 else if (desiredLane == 2)
                 {
-                    if (center >= 0)
-                    {
-                        targetPos += Vector3.right * laneDistance;
-                    }
-                    else 
-                    {
-                        targetPos += Vector3.left * laneDistance;
-                    }
+                    targetPos += Vector3.right * laneDistance;
                 }
             }
             else
@@ -122,25 +111,13 @@ public class PlayerMovement : MonoBehaviour
 
                 if (desiredLane == 0)
                 {
-                    if (centerZ < 0)
-                    {
-                        targetPos += Vector3.forward * laneDistance;
-                    }
-                    else
-                    {
-                        targetPos += Vector3.back * laneDistance;
-                    }
+                    targetPos += Vector3.forward * laneDistance;
+
                 }
                 else if (desiredLane == 2)
                 {
-                    if (centerZ < 0)
-                    {
-                        targetPos += Vector3.back * laneDistance;
-                    }
-                    else
-                    {
-                        targetPos += Vector3.forward * laneDistance;
-                    }
+
+                    targetPos += Vector3.back * laneDistance;
                 }
             }
 
@@ -165,13 +142,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private Vector3? CheckTurn()
+    private void CheckTurn()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
         if (hitColliders.Length != 0)
         {
+            canTurn = true;
             TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (SwipeManager.swipeRight && canTurn && (turnGroundController.turnDir == TurnGroundController.TURNDIR.right))
             {
                 isZPositive = false;
                 transform.position = turnGroundController.pivot.position;
@@ -181,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
                 desiredLane = 1;
                 oldLane = 1;
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (SwipeManager.swipeLeft && canTurn && (turnGroundController.turnDir == TurnGroundController.TURNDIR.left))
             {
                 isZPositive = true;
                 transform.position = turnGroundController.pivot.position;
@@ -192,7 +170,10 @@ public class PlayerMovement : MonoBehaviour
                 oldLane = 1;
             }
         }
-        return null;
+        else
+        {
+            canTurn = false;
+        }
     }
 
     private void Jump()

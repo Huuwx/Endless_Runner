@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TurnGroundController : MonoBehaviour
 {
+    public enum TURNDIR { right, left }
+
+    public TURNDIR turnDir;
+
     public GroundTileSpawner spawner;
 
     public Transform pivot;

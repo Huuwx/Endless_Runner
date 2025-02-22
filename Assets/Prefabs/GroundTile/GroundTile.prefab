@@ -292,8 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
-  pivot1: {fileID: 799043031306522712}
-  pivot2: {fileID: 4444092971864153449}
 --- !u!1 &2736985933323253296
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4f4b4eccb196241b8397c465ade72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnDir: 1
   spawner: {fileID: 0}
   pivot: {fileID: 4444092971864153449}
 --- !u!1 &4642442124472678269
@@ -1090,6 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4f4b4eccb196241b8397c465ade72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnDir: 0
   spawner: {fileID: 0}
   pivot: {fileID: 799043031306522712}
 --- !u!1 &8788080020967622267
