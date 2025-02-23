@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 7470109640751533031}
   - component: {fileID: 8549481993301946810}
   - component: {fileID: 1858304015072051466}
+  - component: {fileID: 466237118119831835}
   m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Ground
@@ -491,6 +492,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 9.999999}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &466237118119831835
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287384404456568694}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5389544328057065148
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +637,7 @@ GameObject:
   - component: {fileID: 8769496870871274729}
   - component: {fileID: 4050215454301570212}
   - component: {fileID: 8508618009777746769}
+  - component: {fileID: 8347440371852827070}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Ground
@@ -702,6 +731,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8347440371852827070
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232100816035652133}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8489860420886705831
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,6 +882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8722930841949879185}
   - component: {fileID: 2522714740015841634}
+  - component: {fileID: 9222146605405776759}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Bridge
@@ -879,6 +936,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4873266, y: 3.4643033, z: 11.070488}
   m_Center: {x: 3.0048313, y: 1.2321504, z: 9.90736}
+--- !u!54 &9222146605405776759
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132749969787946602}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &114240054260065024
 PrefabInstance:
   m_ObjectHideFlags: 0

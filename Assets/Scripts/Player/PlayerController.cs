@@ -58,6 +58,15 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         isAlive = false;
+        if (playerMovement.isZPositive)
+        {
+            playerMovement.rb.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
+        }
+        else
+        {
+            playerMovement.rb.AddForce(new Vector3(-1, 1, 0) * 5, ForceMode.Impulse);
+        }
+        playerMovement.rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
         SoundController.Instance.PlayOneShot(SoundController.Instance.death);
         animator.SetTrigger("Death");
         GameOver();
@@ -70,64 +79,76 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (isAlive)
         {
-            SoundController.Instance.PlayOneShot(SoundController.Instance.jump_land);
-            animator.SetBool("Jump", false);
-            isGrounded = true;
-        }
-        else if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            playerMovement.ResetCollider();
-            SoundController.Instance.PlayOneShot(SoundController.Instance.atk_Sword);
-            animator.SetTrigger("Attack");
-            collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
-            collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
-            ItemController.Instance.MagnetUseTime();
-            ItemController.Instance.ResetUseMagnetTime();
-        }
-        else if (collision.gameObject.CompareTag("Bridge"))
-        {
-            playerMovement.BackToOldLane();
-        }
-        else if (collision.gameObject.CompareTag("Bounce"))
-        {
-            SoundController.Instance.PlayOneShot(SoundController.Instance.bound);
-            Animator Banimator = collision.gameObject.GetComponent<Animator>();
-            Banimator.SetTrigger("Activate");
-            playerMovement.Bounce();
-            animator.SetBool("Jump", true);
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                SoundController.Instance.PlayOneShot(SoundController.Instance.jump_land);
+                animator.SetBool("Jump", false);
+                isGrounded = true;
+            }
+            else if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                playerMovement.ResetCollider();
+                SoundController.Instance.PlayOneShot(SoundController.Instance.atk_Sword);
+                animator.SetTrigger("Attack");
+                collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
+                collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
+                ItemController.Instance.MagnetUseTime();
+                ItemController.Instance.ResetUseMagnetTime();
+            }
+            else if (collision.gameObject.CompareTag("Bridge"))
+            {
+                playerMovement.BackToOldLane();
+            }
+            else if (collision.gameObject.CompareTag("Bounce"))
+            {
+                SoundController.Instance.PlayOneShot(SoundController.Instance.bound);
+                Animator Banimator = collision.gameObject.GetComponent<Animator>();
+                Banimator.SetTrigger("Activate");
+                playerMovement.Bounce();
+                animator.SetBool("Jump", true);
+            }
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (isAlive)
         {
-            isGrounded = true;
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                isGrounded = true;
+            }
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (isAlive)
         {
-            isGrounded = false;
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                isGrounded = false;
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Shield"))
+        if (isAlive)
         {
-            ItemController.Instance.MagicShieldUseTime();
-            ItemController.Instance.ResetMagicShieldUseTime();
-            Destroy(other.gameObject);
-        }
-        else if (other.gameObject.CompareTag("X2"))
-        {
-            ItemController.Instance.ResetX2UseTime();
-            Destroy(other.gameObject);
+            if (other.gameObject.CompareTag("Shield"))
+            {
+                ItemController.Instance.MagicShieldUseTime();
+                ItemController.Instance.ResetMagicShieldUseTime();
+                Destroy(other.gameObject);
+            }
+            else if (other.gameObject.CompareTag("X2"))
+            {
+                ItemController.Instance.ResetX2UseTime();
+                Destroy(other.gameObject);
+            }
         }
     }
 }

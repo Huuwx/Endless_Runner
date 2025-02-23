@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    BoxCollider boxCollider;
-    private Rigidbody rb;
+    private BoxCollider boxCollider;
+    public Rigidbody rb;
 
     public int oldLane = 1;
     public int desiredLane = 1;
+
     private float center = 0;
     public float centerZ = -20;
-
     public float laneDistance = 3;
-
-    [SerializeField] float speed = 0f;
     //Jump
     [SerializeField] float jumpForce = 100f;
 
+    
     [SerializeField] LayerMask turnLayer;
 
     public bool isZPositive = true;
     public bool canTurn = false;
+
+    //[SerializeField] float speed = 0f;
 
     private void Awake()
     {
@@ -137,10 +138,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 forwardMove = new Vector3(0, 0, 0) * speed * Time.deltaTime;
-        rb.MovePosition(rb.position + forwardMove);
+        //Vector3 forwardMove = Vector3.forward * speed * Time.deltaTime;
+        //rb.MovePosition(rb.position + forwardMove);
     }
-
 
     private void CheckTurn()
     {

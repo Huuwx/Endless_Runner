@@ -17,8 +17,6 @@ public class BarrierController : MonoBehaviour
             else
             {
                 PlayerController.Instance.Die();
-                collision.rigidbody.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
-                collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
             }
         }
     }
