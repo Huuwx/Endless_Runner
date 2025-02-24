@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class PlayerParameters : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static PlayerParameters Instance {  get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    [Header("Player Stats")]
+    public float jumpForce = 17f;
+
+    [Header("Player State")]
+    public bool immortal = false;
+    public bool isAlive = true;
+    public bool isGrounded = false;
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            /*DontDestroyOnLoad(gameObject);*/
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

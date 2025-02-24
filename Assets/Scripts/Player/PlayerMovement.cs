@@ -14,10 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float center = 0;
     public float centerZ = -20;
     public float laneDistance = 3;
-    //Jump
-    [SerializeField] float jumpForce = 100f;
 
-    
     [SerializeField] LayerMask turnLayer;
 
     public bool isZPositive = true;
@@ -42,11 +39,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerController.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
+        if (PlayerParameters.Instance.isAlive == true && GameManager.Instance.isStarted)
         {
             CheckTurn();
 
-            if (SwipeManager.swipeUp && PlayerController.Instance.GetIsGrounded() == true)
+            if (SwipeManager.swipeUp && PlayerParameters.Instance.isGrounded == true)
             {
                 ResetCollider();
                 Jump();
@@ -54,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (SwipeManager.swipeLeft && !canTurn)
             {
-                if (PlayerController.Instance.GetIsGrounded())
+                if (PlayerParameters.Instance.isGrounded)
                 {
                     ResetCollider();
                     SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
@@ -70,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (SwipeManager.swipeRight && !canTurn)
             {
-                if (PlayerController.Instance.GetIsGrounded())
+                if (PlayerParameters.Instance.isGrounded)
                 {
                     ResetCollider();
                     SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
@@ -180,11 +177,15 @@ public class PlayerMovement : MonoBehaviour
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.jump);
         PlayerController.Instance.animator.SetBool("Jump", true);
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * PlayerParameters.Instance.jumpForce, ForceMode.Impulse);
     }
 
     private IEnumerator Slide()
     {
+        if(!PlayerParameters.Instance.isGrounded)
+        {
+            rb.AddForce(Vector3.down * PlayerParameters.Instance.jumpForce, ForceMode.Impulse);
+        }
         boxCollider.size = new Vector3(1, 0.5f, 1);
         boxCollider.center = new Vector3(0, 0.25f, 0);
         PlayerController.Instance.animator.SetBool("isSliding", true);

@@ -514,6 +514,7 @@ GameObject:
   - component: {fileID: 287636732}
   - component: {fileID: 287636734}
   - component: {fileID: 287636735}
+  - component: {fileID: 287636736}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -605,7 +606,6 @@ MonoBehaviour:
   desiredLane: 1
   centerZ: -20
   laneDistance: 3
-  jumpForce: 17
   turnLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -624,6 +624,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+--- !u!114 &287636736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287636730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfede79a39c030043949ea20cd7ba5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 17
+  immortal: 0
+  isAlive: 1
+  isGrounded: 0
 --- !u!1001 &295605944
 PrefabInstance:
   m_ObjectHideFlags: 0
