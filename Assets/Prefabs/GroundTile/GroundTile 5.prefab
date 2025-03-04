@@ -237,7 +237,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &4376673626299390408
 Transform:
@@ -376,7 +376,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &6098776801982931664
 Transform:
@@ -638,6 +638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_small_decorated
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e2bff46ff09d7d943b8ba48f77b4f0b5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -656,6 +660,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8590053122796147158}
     m_Modifications:
+    - target: {fileID: 22971194424223465, guid: 94e38114cd0c36d4b8ec2f669998dbfa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 3420485895233142557, guid: 94e38114cd0c36d4b8ec2f669998dbfa, type: 3}
       propertyPath: m_Name
       value: Box (1)
@@ -721,6 +729,10 @@ PrefabInstance:
     - target: {fileID: 1305922574880617598, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305922574880617598, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1825155239550676676, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -828,6 +840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -893,6 +909,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
       propertyPath: m_Name
       value: wall (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -960,6 +980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1026,6 +1050,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1044,6 +1072,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7540608669178279922}
     m_Modifications:
+    - target: {fileID: -9048784500334463732, guid: f07b29676fddb16498d47a928761a035, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f07b29676fddb16498d47a928761a035, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.79
@@ -1083,6 +1115,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f07b29676fddb16498d47a928761a035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4639708937875366868, guid: f07b29676fddb16498d47a928761a035, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f07b29676fddb16498d47a928761a035, type: 3}
       propertyPath: m_Name
@@ -1178,6 +1214,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7756064716777025972, guid: ad0f931345a8b3b4490186316212d669, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ad0f931345a8b3b4490186316212d669, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1189,6 +1229,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ad0f931345a8b3b4490186316212d669, type: 3}
       propertyPath: m_Name
       value: chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ad0f931345a8b3b4490186316212d669, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1256,6 +1300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1321,6 +1369,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cdc4a70a58b27de42b253f7c244b3988, type: 3}
       propertyPath: m_Name
       value: DeadTree_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cdc4a70a58b27de42b253f7c244b3988, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1388,6 +1440,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_Medium_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 005f978f26dc96c4fba9fed17e7bef3d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1453,6 +1509,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
       propertyPath: m_Name
       value: wall (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1520,6 +1580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom_Laetiporus
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b33ef55e499fc343b4e64b878f0874d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1541,6 +1605,10 @@ PrefabInstance:
     - target: {fileID: 1305922574880617598, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
       propertyPath: m_Name
       value: Table (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305922574880617598, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1825155239550676676, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1710,6 +1778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 90ce83bc78206574e9a01bce2cdb4b4c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1775,6 +1847,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
       propertyPath: m_Name
       value: wall (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1842,6 +1918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1908,6 +1988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1973,6 +2057,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4d574b63c0b532644b619cce9f82271e, type: 3}
       propertyPath: m_Name
       value: Rock_Medium_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d574b63c0b532644b619cce9f82271e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2102,6 +2190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2167,6 +2259,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
       propertyPath: m_Name
       value: wall (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2234,6 +2330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2300,6 +2400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant_1_Big
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e23377e52464e244834bb2dbc8759f3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2321,6 +2425,10 @@ PrefabInstance:
     - target: {fileID: 1305922574880617598, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
       propertyPath: m_Name
       value: Table (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305922574880617598, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1825155239550676676, guid: 449b2ae2a5afee345b006ff1b81c7b03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2428,6 +2536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_Wispy_Tall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 33359556396b04b40a53ef07399d8a70, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2494,6 +2606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_Medium_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 005f978f26dc96c4fba9fed17e7bef3d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2559,6 +2675,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cdc4a70a58b27de42b253f7c244b3988, type: 3}
       propertyPath: m_Name
       value: DeadTree_4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cdc4a70a58b27de42b253f7c244b3988, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2688,6 +2808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2746,6 +2870,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8475443909857022316, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: -5768041776848951545, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2757,6 +2885,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
       propertyPath: m_Name
       value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396654156298469847, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7398601587897848818, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2840,6 +2972,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2905,6 +3041,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
       propertyPath: m_Name
       value: wall (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2986,6 +3126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8590053122796147158}
     m_Modifications:
+    - target: {fileID: 22971194424223465, guid: 94e38114cd0c36d4b8ec2f669998dbfa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 3420485895233142557, guid: 94e38114cd0c36d4b8ec2f669998dbfa, type: 3}
       propertyPath: m_Name
       value: Box
@@ -3096,6 +3240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_Medium_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d574b63c0b532644b619cce9f82271e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3162,6 +3310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3227,6 +3379,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 33359556396b04b40a53ef07399d8a70, type: 3}
       propertyPath: m_Name
       value: Grass_Wispy_Tall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 33359556396b04b40a53ef07399d8a70, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3356,6 +3512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 90ce83bc78206574e9a01bce2cdb4b4c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3422,6 +3582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3440,6 +3604,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7540608669178279922}
     m_Modifications:
+    - target: {fileID: -9048784500334463732, guid: f07b29676fddb16498d47a928761a035, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f07b29676fddb16498d47a928761a035, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.79
@@ -3479,6 +3647,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f07b29676fddb16498d47a928761a035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4639708937875366868, guid: f07b29676fddb16498d47a928761a035, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f07b29676fddb16498d47a928761a035, type: 3}
       propertyPath: m_Name
@@ -3582,6 +3754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3648,6 +3824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3713,6 +3893,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
       propertyPath: m_Name
       value: wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a455bc54001950468a1a6bbe7409f58, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
