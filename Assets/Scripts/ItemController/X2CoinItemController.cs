@@ -15,7 +15,7 @@ public class X2CoinItemController : Item
             {
                 CoinController coinController = coinObject.GetComponent<CoinController>();
                 coinController.animator.SetBool("X2", true);
-                coinController.point = 2;
+                coinController.SetPoint(2);
             }
         }
         else
@@ -24,7 +24,7 @@ public class X2CoinItemController : Item
             {
                 CoinController coinController = coinObject.GetComponent<CoinController>();
                 coinController.animator.SetBool("X2", false);
-                coinController.point = 1;
+                coinController.SetPoint(1);
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarrierSpawner : MonoBehaviour
 {
-    public GameObject BarrierPrefab;
+    [SerializeField] GameObject BarrierPrefab;
 
     // Start is called before the first frame update
     void Start()

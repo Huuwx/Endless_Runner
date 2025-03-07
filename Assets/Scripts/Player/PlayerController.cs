@@ -41,9 +41,9 @@ public class PlayerController : MonoBehaviour
     {
         animator = gameObject.GetComponentInChildren<Animator>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
-        PlayerParameters.Instance.immortal = false;
-        PlayerParameters.Instance.isAlive = true;
-        PlayerParameters.Instance.isGrounded = false;
+        PlayerParameters.Instance.SetImmortal(false);
+        PlayerParameters.Instance.SetIsAlive(true);
+        PlayerParameters.Instance.SetIsGrounded(false);
     }
 
     // Update is called once per frame
@@ -57,8 +57,8 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        PlayerParameters.Instance.isAlive = false;
-        if (playerMovement.isZPositive)
+        PlayerParameters.Instance.SetIsAlive(false);
+        if (playerMovement.GetIsZPositive())
         {
             playerMovement.rb.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
         }
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (PlayerParameters.Instance.isAlive)
+        if (PlayerParameters.Instance.GetIsAlive())
         {
             if (collision.gameObject.CompareTag("Ground"))
             {
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
                 //SoundController.Instance.PlayOneShot(SoundController.Instance.jump_land);
 
                 animator.SetBool("Jump", false);
-                PlayerParameters.Instance.isGrounded = true;
+                PlayerParameters.Instance.SetIsGrounded(true);
             }
             else if (collision.gameObject.CompareTag("Obstacle"))
             {
@@ -116,29 +116,29 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (PlayerParameters.Instance.isAlive)
+        if (PlayerParameters.Instance.GetIsAlive())
         {
             if (collision.gameObject.CompareTag("Ground"))
             {
-                PlayerParameters.Instance.isGrounded = true;
+                PlayerParameters.Instance.SetIsGrounded(true);
             }
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (PlayerParameters.Instance.isAlive)
+        if (PlayerParameters.Instance.GetIsAlive())
         {
             if (collision.gameObject.CompareTag("Ground"))
             {
-                PlayerParameters.Instance.isGrounded = false;
+                PlayerParameters.Instance.SetIsGrounded(false);
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerParameters.Instance.isAlive)
+        if (PlayerParameters.Instance.GetIsAlive())
         {
             if (other.gameObject.CompareTag("Shield"))
             {

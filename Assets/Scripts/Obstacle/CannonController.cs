@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CannonController : BarrierController
 {
-    public bool isActive = false;
+    private bool isActive = false;
 
     void Update()
     {
@@ -18,7 +18,7 @@ public class CannonController : BarrierController
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (PlayerParameters.Instance.immortal)
+            if (PlayerParameters.Instance.GetImmortal())
             {
                 ParticleSystemController.Instance.explosion.Play();
                 Destroy(gameObject);
@@ -30,5 +30,15 @@ public class CannonController : BarrierController
                 isActive = false;
             }
         }
+    }
+
+    public bool GetIsActive()
+    {
+        return isActive;
+    }
+
+    public void SetIsActive(bool value)
+    {
+        isActive = value;
     }
 }

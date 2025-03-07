@@ -31,7 +31,7 @@ public class GroundTile : MonoBehaviour
             {
                 foreach (var controller in cannonController)
                 {
-                    controller.isActive = true;
+                    controller.SetIsActive(true);
                 }
             }
         }

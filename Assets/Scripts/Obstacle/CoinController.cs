@@ -6,8 +6,8 @@ public class CoinController : MonoBehaviour
 {
     public Animator animator;
 
-    public float rotationSpeed = 100f;
-    public int point = 1;
+    [SerializeField] float rotationSpeed = 100f;
+    private int point = 1;
 
     private void Start()
     {
@@ -29,5 +29,15 @@ public class CoinController : MonoBehaviour
             GameManager.Instance.UpdateCoin(point);
             Destroy(gameObject);
         }
+    }
+
+    public int GetPoint()
+    {
+        return point;
+    }
+
+    public void SetPoint(int value)
+    {
+        point = value;
     }
 }

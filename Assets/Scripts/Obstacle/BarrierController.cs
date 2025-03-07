@@ -8,7 +8,7 @@ public class BarrierController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (PlayerParameters.Instance.immortal)
+            if (PlayerParameters.Instance.GetImmortal())
             {
                 ParticleSystemController.Instance.explosion.Play();
                 Destroy(gameObject);

@@ -9,7 +9,7 @@ public class RunnerGroundTile : MonoBehaviour
 
     void Update()
     {
-        if (PlayerParameters.Instance.isAlive == true && GameManager.Instance.isStarted)
+        if (PlayerParameters.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
         {
             if(spawner.movingSpeed < spawner.maxSpeed)
             {

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MagnetCoinController : Item
 {
-    public Transform target;
-    public GameObject PointCheck;
-    public Vector3 sizePointCheck;
+    [SerializeField] Transform target;
+    [SerializeField] GameObject PointCheck;
+    [SerializeField] Vector3 sizePointCheck;
 
     // Update is called once per frame
     void Update()

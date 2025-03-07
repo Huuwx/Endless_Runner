@@ -8,17 +8,17 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider boxCollider;
     public Rigidbody rb;
 
-    public int oldLane = 1;
-    public int desiredLane = 1;
+    private int oldLane = 1;
+    private int desiredLane = 1;
 
     private float center = 0;
-    public float centerZ = -20;
-    public float laneDistance = 3;
+    private float centerZ = -20;
+    private float laneDistance = 3;
 
     [SerializeField] LayerMask turnLayer;
 
-    public bool isZPositive = true;
-    public bool canTurn = false;
+    private bool isZPositive = true;
+    private bool canTurn = false;
 
     //[SerializeField] float speed = 0f;
 
@@ -39,11 +39,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerParameters.Instance.isAlive == true && GameManager.Instance.isStarted)
+        if (PlayerParameters.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
         {
             CheckTurn();
 
-            if (SwipeManager.swipeUp && PlayerParameters.Instance.isGrounded == true)
+            if (SwipeManager.swipeUp && PlayerParameters.Instance.GetIsGrounded() == true)
             {
                 ResetCollider();
                 Jump();
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (SwipeManager.swipeLeft && !canTurn)
             {
-                if (PlayerParameters.Instance.isGrounded)
+                if (PlayerParameters.Instance.GetIsGrounded())
                 {
                     ResetCollider();
                     SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (SwipeManager.swipeRight && !canTurn)
             {
-                if (PlayerParameters.Instance.isGrounded)
+                if (PlayerParameters.Instance.GetIsGrounded())
                 {
                     ResetCollider();
                     SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
@@ -177,14 +177,14 @@ public class PlayerMovement : MonoBehaviour
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.jump);
         PlayerController.Instance.animator.SetBool("Jump", true);
-        rb.AddForce(Vector3.up * PlayerParameters.Instance.jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * PlayerParameters.Instance.GetJumpForce(), ForceMode.Impulse);
     }
 
     private IEnumerator Slide()
     {
-        if(!PlayerParameters.Instance.isGrounded)
+        if(!PlayerParameters.Instance.GetIsGrounded())
         {
-            rb.AddForce(Vector3.down * PlayerParameters.Instance.jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.down * PlayerParameters.Instance.GetJumpForce(), ForceMode.Impulse);
         }
         boxCollider.size = new Vector3(1, 0.5f, 1);
         boxCollider.center = new Vector3(0, 0.25f, 0);
@@ -212,5 +212,10 @@ public class PlayerMovement : MonoBehaviour
     public void Bounce()
     {
         rb.AddForce(Vector3.up * 30, ForceMode.Impulse);
+    }
+
+    public bool GetIsZPositive()
+    {
+        return isZPositive;
     }
 }

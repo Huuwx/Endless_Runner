@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] protected float useTimeMax = 5;
-    public float useTimeCounter;
+    protected float useTimeCounter;
 
     protected virtual void Awake()
     {
