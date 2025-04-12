@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &260648494
 Transform:
   m_ObjectHideFlags: 0
@@ -3307,6 +3307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1429541840}
   - component: {fileID: 1429541841}
+  - component: {fileID: 1429541842}
   m_Layer: 6
   m_Name: Item
   m_TagString: Untagged
@@ -3344,11 +3345,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c34a793819e7e94bb6a5c5b59911430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnet: {fileID: 6577872335705549609}
-  magnetController: {fileID: 6577872335705549610}
-  x2CoinItemController: {fileID: 260648495}
-  magicShield: {fileID: 1141317666}
-  magicShieldController: {fileID: 1141317671}
+  _item: {fileID: 0}
+--- !u!114 &1429541842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429541839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee86245a184d5fb49b70baed1f763b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listItems:
+  - {fileID: 6577872335705549610}
+  - {fileID: 260648495}
+  - {fileID: 1141317671}
+  _item: {fileID: 1429541841}
 --- !u!1 &1445319678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,6 +3796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 287636735}
   soundController: {fileID: 717342354}
+  _itemManager: {fileID: 1429541842}
   StartingText: {fileID: 825579297}
   isStarted: 0
   coinNumberTxt: {fileID: 19669991}

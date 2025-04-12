@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonController : BarrierController
+public class CannonController : ObstacleBase
 {
     private bool isActive = false;
 
@@ -22,7 +22,7 @@ public class CannonController : BarrierController
             {
                 ParticleSystemController.Instance.explosion.Play();
                 gameObject.SetActive(false);
-                ItemController.Instance.OutOfTimeToUseMagicShield();
+                // ItemController.Instance.OutOfTimeToUseItem();
             }
             else
             {

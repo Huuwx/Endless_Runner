@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagnetCoinController : Item
+public class MagnetCoinController : ItemBase
 {
     [SerializeField] Transform target;
     [SerializeField] GameObject PointCheck;
@@ -11,15 +11,7 @@ public class MagnetCoinController : Item
     // Update is called once per frame
     void Update()
     {
-        if (useTimeCounter > 0)
-        {
-            useTimeCounter -= Time.deltaTime;
-            CheckCoin();
-        }
-        else
-        {
-            ItemController.Instance.OutOfTimeToUseMagnet();
-        }
+        ItemEffect();
     }
 
     public void CheckCoin()
@@ -37,5 +29,18 @@ public class MagnetCoinController : Item
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(PointCheck.transform.position, sizePointCheck);
+    }
+
+    protected override void ItemEffect()
+    {
+        if (useTimeCounter > 0)
+        {
+            useTimeCounter -= Time.deltaTime;
+            CheckCoin();
+        }
+        else
+        {
+            ClearUseTime();
+        }
     }
 }

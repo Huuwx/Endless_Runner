@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] SoundController soundController;
     public SoundController SoundController { get { return soundController; } }
+    
+    [SerializeField] private ItemManager _itemManager;
+    public ItemManager ItemManager { get { return _itemManager; } }
 
     [SerializeField] TextMeshProUGUI StartingText;
     public bool isStarted;

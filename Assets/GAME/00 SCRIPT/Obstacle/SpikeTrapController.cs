@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeTrapController : BarrierController
+public class SpikeTrapController : ObstacleBase
 {
     public Animator animator;
 

@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class X2CoinItemController : Item
+public class X2CoinItemController : ItemBase
 {
     // Update is called once per frame
     void Update()
+    {
+        ItemEffect();
+    }
+
+    protected override void ItemEffect()
     {
         GameObject[] coinObjects = GameObject.FindGameObjectsWithTag("Coin");
         if (useTimeCounter > 0)

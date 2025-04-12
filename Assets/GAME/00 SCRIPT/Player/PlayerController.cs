@@ -76,8 +76,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("Attack");
                 collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
                 collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
-                ItemController.Instance.MagnetUseTime();
-                ItemController.Instance.ResetUseMagnetTime();
+                GameManager.Instance.ItemManager.ChangeItem(0);
+                ItemController.Instance.ItemtUseTime();
             }
             else if (collision.gameObject.CompareTag("Bridge"))
             {
@@ -122,13 +122,13 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Shield"))
             {
-                ItemController.Instance.MagicShieldUseTime();
-                ItemController.Instance.ResetMagicShieldUseTime();
+                GameManager.Instance.ItemManager.ChangeItem(2);
+                ItemController.Instance.ItemtUseTime();
                 Destroy(other.gameObject);
             }
             else if (other.gameObject.CompareTag("X2"))
             {
-                ItemController.Instance.ResetX2UseTime();
+                GameManager.Instance.ItemManager.ChangeItem(1);
                 Destroy(other.gameObject);
             }
         }
