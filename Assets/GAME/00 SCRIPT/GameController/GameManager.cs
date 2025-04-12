@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,12 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+    
+    [SerializeField] PlayerController player;
+    public PlayerController Player { get { return player; } }
+    
+    [SerializeField] SoundController soundController;
+    public SoundController SoundController { get { return soundController; } }
 
     [SerializeField] TextMeshProUGUI StartingText;
     public bool isStarted;
@@ -18,8 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOver;
     public bool isGameOver;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -29,7 +35,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         isGameOver = false;
         isStarted = false;
         coinNumber = 0;
@@ -47,7 +57,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
             isStarted = true;
-            PlayerController.Instance.animator.SetTrigger("Start");
+            Player.animator.SetTrigger("Start");
             Destroy(StartingText);
         }
     }

@@ -55,7 +55,7 @@ public class ItemController : MonoBehaviour
     public void MagicShieldUseTime()
     {
         magicShield.SetActive(true);
-        PlayerParameters.Instance.SetImmortal(true);
+        GameManager.Instance.Player.playerParameters.State = PlayerState.Immortal;
     }
 
     public void ResetMagicShieldUseTime()
@@ -67,6 +67,6 @@ public class ItemController : MonoBehaviour
     {
         magicShieldController.ClearUseTime();
         magicShield.SetActive(false);
-        PlayerParameters.Instance.SetImmortal(false);
+        GameManager.Instance.Player.playerParameters.State = PlayerState.Normal;
     }
 }

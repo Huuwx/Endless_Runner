@@ -25,7 +25,7 @@ public class CoinController : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            SoundController.Instance.PlayOneShot(SoundController.Instance.pickUpCoin);
+            GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.pickUpCoin);
             GameManager.Instance.UpdateCoin(point);
             Destroy(gameObject);
         }

@@ -6,6 +6,6 @@ public class PlayerSFX : MonoBehaviour
 {
     public void FootStep()
     {
-        SoundController.Instance.PlayOneShot(SoundController.Instance.run);
+        GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.run);
     }
 }

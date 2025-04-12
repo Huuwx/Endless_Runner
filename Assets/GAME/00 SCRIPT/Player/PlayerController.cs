@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,35 +6,17 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    private static PlayerController instance;
-    public static PlayerController Instance { get { return instance; } }
-
     private PlayerMovement playerMovement;
 
     public Animator animator;
-
-    //private bool immortal = false;
-    //public void SetImmortal(bool immortal) { this.immortal = immortal; }
-    //public bool GetImmortal() { return immortal; }
-
-    //private bool isAlive = true;
-    //public void SetIsAlive(bool isAlive) { this.isAlive = isAlive; }
-    //public bool GetIsAlive() { return isAlive; }
-
-    //private bool isGrounded = false;
-    //public void SetIsGrounded(bool isGrounded) { this.isGrounded = isGrounded; }
-    //public bool GetIsGrounded() { return isGrounded; }
+    
+    public PlayerParameters playerParameters = new PlayerParameters();
+    
+    public bool isGrounded = false;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        isGrounded = false;
     }
 
     // Start is called before the first frame update
@@ -41,9 +24,6 @@ public class PlayerController : MonoBehaviour
     {
         animator = gameObject.GetComponentInChildren<Animator>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
-        PlayerParameters.Instance.SetImmortal(false);
-        PlayerParameters.Instance.SetIsAlive(true);
-        PlayerParameters.Instance.SetIsGrounded(false);
     }
 
     // Update is called once per frame
@@ -57,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        PlayerParameters.Instance.SetIsAlive(false);
+        playerParameters.State = PlayerState.Dead;
         if (playerMovement.GetIsZPositive())
         {
             playerMovement.rb.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
@@ -67,7 +47,7 @@ public class PlayerController : MonoBehaviour
             playerMovement.rb.AddForce(new Vector3(-1, 1, 0) * 5, ForceMode.Impulse);
         }
         playerMovement.rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
-        SoundController.Instance.PlayOneShot(SoundController.Instance.death);
+        GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.death);
         animator.SetTrigger("Death");
         GameOver();
     }
@@ -79,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (PlayerParameters.Instance.GetIsAlive())
+        if (playerParameters.IsAlive)
         {
             if (collision.gameObject.CompareTag("Ground"))
             {
@@ -87,12 +67,12 @@ public class PlayerController : MonoBehaviour
                 //SoundController.Instance.PlayOneShot(SoundController.Instance.jump_land);
 
                 animator.SetBool("Jump", false);
-                PlayerParameters.Instance.SetIsGrounded(true);
+                isGrounded = true;
             }
             else if (collision.gameObject.CompareTag("Obstacle"))
             {
                 playerMovement.ResetCollider();
-                SoundController.Instance.PlayOneShot(SoundController.Instance.atk_Sword);
+                GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.atk_Sword);
                 animator.SetTrigger("Attack");
                 collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
                 collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
@@ -105,7 +85,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag("Bounce"))
             {
-                SoundController.Instance.PlayOneShot(SoundController.Instance.bound);
+                GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.bound);
                 Animator Banimator = collision.gameObject.GetComponent<Animator>();
                 Banimator.SetTrigger("Activate");
                 playerMovement.Bounce();
@@ -116,29 +96,29 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (PlayerParameters.Instance.GetIsAlive())
+        if (playerParameters.IsAlive)
         {
             if (collision.gameObject.CompareTag("Ground"))
             {
-                PlayerParameters.Instance.SetIsGrounded(true);
+                isGrounded = true;
             }
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (PlayerParameters.Instance.GetIsAlive())
+        if (playerParameters.IsAlive)
         {
             if (collision.gameObject.CompareTag("Ground"))
             {
-                PlayerParameters.Instance.SetIsGrounded(false);
+                isGrounded = false;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerParameters.Instance.GetIsAlive())
+        if (playerParameters.IsAlive)
         {
             if (other.gameObject.CompareTag("Shield"))
             {

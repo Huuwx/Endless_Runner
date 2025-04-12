@@ -39,11 +39,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerParameters.Instance.GetIsAlive() == true && GameManager.Instance.isStarted)
+        if (GameManager.Instance.Player.playerParameters.IsAlive == true && GameManager.Instance.isStarted)
         {
             CheckTurn();
 
-            if (SwipeManager.swipeUp && PlayerParameters.Instance.GetIsGrounded() == true)
+            if (SwipeManager.swipeUp && GameManager.Instance.Player.isGrounded == true)
             {
                 ResetCollider();
                 Jump();
@@ -51,11 +51,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (SwipeManager.swipeLeft && !canTurn)
             {
-                if (PlayerParameters.Instance.GetIsGrounded())
+                if (GameManager.Instance.Player.isGrounded)
                 {
                     ResetCollider();
-                    SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
-                    PlayerController.Instance.animator.SetTrigger("swipeLeft");
+                    GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.dash);
+                    GameManager.Instance.Player.animator.SetTrigger("swipeLeft");
                 }
                 desiredLane--;
                 oldLane = desiredLane + 1;
@@ -67,11 +67,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (SwipeManager.swipeRight && !canTurn)
             {
-                if (PlayerParameters.Instance.GetIsGrounded())
+                if (GameManager.Instance.Player.isGrounded)
                 {
                     ResetCollider();
-                    SoundController.Instance.PlayOneShot(SoundController.Instance.dash);
-                    PlayerController.Instance.animator.SetTrigger("swipeRight");
+                    GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.dash);
+                    GameManager.Instance.Player.animator.SetTrigger("swipeRight");
                 }
                 desiredLane++;
                 oldLane = desiredLane - 1;
@@ -175,33 +175,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        SoundController.Instance.PlayOneShot(SoundController.Instance.jump);
-        PlayerController.Instance.animator.SetBool("Jump", true);
-        rb.AddForce(Vector3.up * PlayerParameters.Instance.GetJumpForce(), ForceMode.Impulse);
+        GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.jump);
+        GameManager.Instance.Player.animator.SetBool("Jump", true);
+        rb.AddForce(Vector3.up * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
     }
 
     private IEnumerator Slide()
     {
-        if(!PlayerParameters.Instance.GetIsGrounded())
+        if(!GameManager.Instance.Player.isGrounded)
         {
-            rb.AddForce(Vector3.down * PlayerParameters.Instance.GetJumpForce(), ForceMode.Impulse);
+            rb.AddForce(Vector3.down * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
         }
         boxCollider.size = new Vector3(1, 0.5f, 1);
         boxCollider.center = new Vector3(0, 0.25f, 0);
-        PlayerController.Instance.animator.SetBool("isSliding", true);
+        GameManager.Instance.Player.animator.SetBool("isSliding", true);
 
         yield return new WaitForSeconds(1f);
 
         boxCollider.size = new Vector3(1, 2.5f, 1);
         boxCollider.center = new Vector3(0, 1.1f, 0);
-        PlayerController.Instance.animator.SetBool("isSliding", false);
+        GameManager.Instance.Player.animator.SetBool("isSliding", false);
     }
 
     public void ResetCollider()
     {
         boxCollider.size = new Vector3(1, 2.5f, 1);
         boxCollider.center = new Vector3(0, 1.1f, 0);
-        PlayerController.Instance.animator.SetBool("isSliding", false);
+        GameManager.Instance.Player.animator.SetBool("isSliding", false);
     }
 
     public void BackToOldLane()

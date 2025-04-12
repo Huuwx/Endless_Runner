@@ -512,7 +512,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTimeMax: 5
-  useTimeCounter: 0
 --- !u!1 &287636730
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +525,6 @@ GameObject:
   - component: {fileID: 287636732}
   - component: {fileID: 287636734}
   - component: {fileID: 287636735}
-  - component: {fileID: 287636736}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -614,15 +612,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  oldLane: 1
-  desiredLane: 1
-  centerZ: -20
-  laneDistance: 3
   turnLayer:
     serializedVersion: 2
     m_Bits: 256
-  isZPositive: 1
-  canTurn: 0
 --- !u!114 &287636735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,21 +628,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
---- !u!114 &287636736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287636730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfede79a39c030043949ea20cd7ba5ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 17
-  immortal: 0
-  isAlive: 1
+  playerParameters:
+    jumpForce: 17
   isGrounded: 0
 --- !u!1001 &295605944
 PrefabInstance:
@@ -2891,7 +2870,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTimeMax: 5
-  useTimeCounter: 0
 --- !u!1001 &1239865523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3802,6 +3780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d49b5e7566bd7a48ae29e848d024a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 287636735}
+  soundController: {fileID: 717342354}
   StartingText: {fileID: 825579297}
   isStarted: 0
   coinNumberTxt: {fileID: 19669991}
@@ -10790,7 +10770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTimeMax: 5
-  useTimeCounter: 0
   target: {fileID: 287636731}
   PointCheck: {fileID: 1053418838}
   sizePointCheck: {x: 10, y: 35, z: 12}

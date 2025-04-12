@@ -8,15 +8,15 @@ public class BarrierController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (PlayerParameters.Instance.GetImmortal())
+            if (GameManager.Instance.Player.playerParameters.IsImmortal)
             {
                 ParticleSystemController.Instance.explosion.Play();
-                Destroy(gameObject);
+                gameObject.SetActive(false);
                 ItemController.Instance.OutOfTimeToUseMagicShield();
             }
             else
             {
-                PlayerController.Instance.Die();
+                GameManager.Instance.Player.Die();
             }
         }
     }

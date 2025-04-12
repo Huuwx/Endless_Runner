@@ -8,7 +8,7 @@ public class WallController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerController.Instance.Die();
+            GameManager.Instance.Player.Die();
         }
     }
 }
