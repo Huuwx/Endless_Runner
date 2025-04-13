@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
     
+    [Header("-----SINGLETON-----")]
     [SerializeField] PlayerController player;
     public PlayerController Player { get { return player; } }
     
@@ -18,7 +19,11 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private ItemManager _itemManager;
     public ItemManager ItemManager { get { return _itemManager; } }
+    
+    [SerializeField] private ItemController _itemController;
+    public ItemController ItemController { get { return _itemController; } }
 
+    [Header("-----UI-----")]
     [SerializeField] TextMeshProUGUI StartingText;
     public bool isStarted;
 

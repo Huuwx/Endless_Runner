@@ -19,16 +19,11 @@ public class CannonController : ObstacleBase
         if (collision.gameObject.tag == "Player")
         {
             if (GameManager.Instance.Player.playerParameters.IsImmortal)
-            {
-                ParticleSystemController.Instance.explosion.Play();
-                gameObject.SetActive(false);
-                // ItemController.Instance.OutOfTimeToUseItem();
-            }
-            else
-            {
-                GameManager.Instance.Player.Die();
-                isActive = false;
-            }
+                return;
+            
+            
+            GameManager.Instance.Player.Die();
+            isActive = false;
         }
     }
 

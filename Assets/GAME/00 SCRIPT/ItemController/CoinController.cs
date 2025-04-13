@@ -6,19 +6,12 @@ public class CoinController : MonoBehaviour
 {
     public Animator animator;
 
-    [SerializeField] float rotationSpeed = 100f;
     private int point = 1;
 
-    private void Start()
+    private void Awake()
     {
         point = 1;
         animator = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Rotate(0, rotationSpeed  * Time.deltaTime, 0);
     }
 
     private void OnTriggerEnter(Collider other)

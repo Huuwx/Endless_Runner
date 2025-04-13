@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,16 +12,33 @@ public class MagicShieldController : ItemBase
 
     protected override void ItemEffect()
     {
-        
-        if(useTimeCounter > 0)
+        if (this.gameObject.activeInHierarchy)
         {
-            useTimeCounter -= Time.deltaTime;
-            GameManager.Instance.Player.playerParameters.State = PlayerState.Immortal;
+            if (useTimeCounter > 0)
+            {
+                useTimeCounter -= Time.deltaTime;
+                GameManager.Instance.Player.playerParameters.State = PlayerState.Immortal;
+            }
+            else
+            {
+                ClearUseTime();
+            }
         }
-        else
+    }
+
+    public override void ClearUseTime()
+    {
+        base.ClearUseTime();
+        GameManager.Instance.Player.playerParameters.State = PlayerState.Normal;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Barrier")
         {
+            ParticleSystemController.Instance.explosion.Play();
             ClearUseTime();
-            GameManager.Instance.Player.playerParameters.State = PlayerState.Normal;
+            other.gameObject.SetActive(false);
         }
     }
 }

@@ -14,6 +14,7 @@ TagManager:
   - Shield
   - TurnGround
   - Wall
+  - Item
   layers:
   - Default
   - TransparentFX

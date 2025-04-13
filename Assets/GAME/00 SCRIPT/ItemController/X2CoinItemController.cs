@@ -12,24 +12,29 @@ public class X2CoinItemController : ItemBase
 
     protected override void ItemEffect()
     {
-        GameObject[] coinObjects = GameObject.FindGameObjectsWithTag("Coin");
-        if (useTimeCounter > 0)
+        if (this.gameObject.activeInHierarchy)
         {
-            useTimeCounter -= Time.deltaTime;
-            foreach (GameObject coinObject in coinObjects)
+            GameObject[] coinObjects = GameObject.FindGameObjectsWithTag("Coin");
+            if (useTimeCounter > 0)
             {
-                CoinController coinController = coinObject.GetComponent<CoinController>();
-                coinController.animator.SetBool("X2", true);
-                coinController.SetPoint(2);
+                useTimeCounter -= Time.deltaTime;
+                foreach (GameObject coinObject in coinObjects)
+                {
+                    CoinController coinController = coinObject.GetComponent<CoinController>();
+                    coinController.animator.SetBool("X2", true);
+                    coinController.SetPoint(2);
+                }
             }
-        }
-        else
-        {
-            foreach (GameObject coinObject in coinObjects)
+            else
             {
-                CoinController coinController = coinObject.GetComponent<CoinController>();
-                coinController.animator.SetBool("X2", false);
-                coinController.SetPoint(1);
+                foreach (GameObject coinObject in coinObjects)
+                {
+                    CoinController coinController = coinObject.GetComponent<CoinController>();
+                    coinController.animator.SetBool("X2", false);
+                    coinController.SetPoint(1);
+                }
+
+                ClearUseTime();
             }
         }
     }

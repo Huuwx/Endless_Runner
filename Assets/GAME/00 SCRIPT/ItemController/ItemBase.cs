@@ -18,12 +18,7 @@ public abstract class ItemBase : MonoBehaviour
         useTimeCounter = useTimeMax;
     }
 
-    public void ResetUseTime()
-    {
-        useTimeCounter = useTimeMax;
-    }
-
-    public void ClearUseTime()
+    public virtual void ClearUseTime()
     {
         useTimeCounter = 0;
         this.gameObject.SetActive(false);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -76,8 +77,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("Attack");
                 collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
                 collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
-                GameManager.Instance.ItemManager.ChangeItem(0);
-                ItemController.Instance.ItemtUseTime();
+                GameManager.Instance.ItemManager.ChangeItem(collision.gameObject.GetComponent<ItemIndex>().index);
+                GameManager.Instance.ItemController.ItemUseTime();
             }
             else if (collision.gameObject.CompareTag("Bridge"))
             {
@@ -120,16 +121,11 @@ public class PlayerController : MonoBehaviour
     {
         if (playerParameters.IsAlive)
         {
-            if (other.gameObject.CompareTag("Shield"))
+            if (other.gameObject.CompareTag("Item"))
             {
-                GameManager.Instance.ItemManager.ChangeItem(2);
-                ItemController.Instance.ItemtUseTime();
-                Destroy(other.gameObject);
-            }
-            else if (other.gameObject.CompareTag("X2"))
-            {
-                GameManager.Instance.ItemManager.ChangeItem(1);
-                Destroy(other.gameObject);
+                GameManager.Instance.ItemManager.ChangeItem(other.gameObject.GetComponent<ItemIndex>().index);
+                GameManager.Instance.ItemController.ItemUseTime();
+                other.gameObject.SetActive(false);
             }
         }
     }
