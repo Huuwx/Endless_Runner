@@ -36,7 +36,7 @@ public class MagicShieldController : ItemBase
     {
         if (other.gameObject.tag == "Barrier")
         {
-            ParticleSystemController.Instance.explosion.Play();
+            GameManager.Instance.ParticleController.explosion.Play();
             ClearUseTime();
             other.gameObject.SetActive(false);
         }

@@ -18,6 +18,11 @@ public abstract class ItemBase : MonoBehaviour
         useTimeCounter = useTimeMax;
     }
 
+    public void ResetCounterTime()
+    {
+        useTimeCounter = useTimeMax;
+    }
+
     public virtual void ClearUseTime()
     {
         useTimeCounter = 0;

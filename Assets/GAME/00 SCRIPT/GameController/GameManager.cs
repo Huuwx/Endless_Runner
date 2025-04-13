@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private ItemController _itemController;
     public ItemController ItemController { get { return _itemController; } }
+    
+    [SerializeField] ParticleSystemController _particleController;
+    public ParticleSystemController ParticleController { get { return _particleController; } }
+    
+    [SerializeField] SceneController _sceneController;
+    public SceneController SceneController { get { return _sceneController; } }
 
     [Header("-----UI-----")]
     [SerializeField] TextMeshProUGUI StartingText;

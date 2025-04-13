@@ -192,14 +192,12 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        boxCollider.size = new Vector3(1, 2.5f, 1);
-        boxCollider.center = new Vector3(0, 1.1f, 0);
-        GameManager.Instance.Player.animator.SetBool("isSliding", false);
+        ResetCollider();
     }
 
     public void ResetCollider()
     {
-        boxCollider.size = new Vector3(1, 2.5f, 1);
+        boxCollider.size = new Vector3(1, 2.3f, 1);
         boxCollider.center = new Vector3(0, 1.1f, 0);
         GameManager.Instance.Player.animator.SetBool("isSliding", false);
     }

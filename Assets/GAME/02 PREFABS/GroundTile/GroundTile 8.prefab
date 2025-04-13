@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 6898718748562869985}
   - component: {fileID: 8672203829270952491}
   - component: {fileID: 2556834843547608149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: floor_wood_large
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 8767363794419382267}
   - component: {fileID: 7933263478898747131}
   - component: {fileID: 4808520621406761176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: floor_wood_large (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}

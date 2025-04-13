@@ -5,23 +5,12 @@ using UnityEngine;
 
 public class GroundSpawner : MonoBehaviour
 {
-    private static GroundSpawner instance;
-    public static GroundSpawner Instance {  get { return instance; } }
-
     public Vector3 nextSpawnPoint;
 
     public List<GameObject> groundTile;
     [SerializeField] Transform groundSpawner;
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
         groundSpawner = gameObject.transform;
     }
 

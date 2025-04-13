@@ -13,6 +13,7 @@ public class ItemController : MonoBehaviour
     
     public void ItemUseTime()
     {
+        _item.ResetCounterTime();
         _item.gameObject.SetActive(true);
     }
 }

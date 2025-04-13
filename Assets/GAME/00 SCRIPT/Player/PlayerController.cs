@@ -13,11 +13,15 @@ public class PlayerController : MonoBehaviour
     
     public PlayerParameters playerParameters = new PlayerParameters();
     
+    Collider playerCollider;
+    
     public bool isGrounded = false;
+    [SerializeField] LayerMask groundLayer;
 
     private void Awake()
     {
         isGrounded = false;
+        playerCollider = GetComponent<Collider>();
     }
 
     // Start is called before the first frame update
@@ -30,10 +34,32 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckGrounded();
+        Vector3 origin = transform.position + Vector3.down * 0.5f;
         //if(transform.position.y < -5)
         //{
         //    Die();
         //}
+    }
+
+    public void CheckGrounded()
+    {
+        RaycastHit hit;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 0.2f, groundLayer);
+        if (!isGrounded)
+        {
+            animator.SetBool("Jump", true);
+            return;
+        }
+
+        Debug.Log(hit.transform.name);
+        animator.SetBool("Jump", false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawRay(transform.position + new Vector3(0, 0 , 0.5f), new Vector3(0, -0.2f, 0), Color.red);
+        Debug.DrawRay(transform.position, new Vector3(0, -0.2f, 0), Color.red);
     }
 
     public void Die()
@@ -62,15 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerParameters.IsAlive)
         {
-            if (collision.gameObject.CompareTag("Ground"))
-            {
-
-                //SoundController.Instance.PlayOneShot(SoundController.Instance.jump_land);
-
-                animator.SetBool("Jump", false);
-                isGrounded = true;
-            }
-            else if (collision.gameObject.CompareTag("Obstacle"))
+            if (collision.gameObject.CompareTag("Obstacle"))
             {
                 playerMovement.ResetCollider();
                 GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.atk_Sword);
@@ -97,24 +115,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (playerParameters.IsAlive)
-        {
-            if (collision.gameObject.CompareTag("Ground"))
-            {
-                isGrounded = true;
-            }
-        }
+        // if (playerParameters.IsAlive)
+        // {
+        //     if (collision.gameObject.CompareTag("Ground"))
+        //     {
+        //         isGrounded = true;
+        //     }
+        // }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (playerParameters.IsAlive)
-        {
-            if (collision.gameObject.CompareTag("Ground"))
-            {
-                isGrounded = false;
-            }
-        }
+        // if (playerParameters.IsAlive)
+        // {
+        //     if (collision.gameObject.CompareTag("Ground"))
+        //     {
+        //         isGrounded = false;
+        //     }
+        // }
     }
 
     private void OnTriggerEnter(Collider other)
