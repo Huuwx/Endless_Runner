@@ -14,7 +14,7 @@ public class X2CoinItemController : ItemBase
     {
         if (this.gameObject.activeInHierarchy)
         {
-            GameObject[] coinObjects = GameObject.FindGameObjectsWithTag("Coin");
+            GameObject[] coinObjects = GameObject.FindGameObjectsWithTag(CONSTANT.CoinTag);
             if (useTimeCounter > 0)
             {
                 useTimeCounter -= Time.deltaTime;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -13,10 +14,15 @@ public class PlayerController : MonoBehaviour
     
     public PlayerParameters playerParameters = new PlayerParameters();
     
-    Collider playerCollider;
+    [SerializeField] Collider playerCollider;
     
     public bool isGrounded = false;
     [SerializeField] LayerMask groundLayer;
+
+    [SerializeField] private Transform rcPoint;
+
+    [SerializeField] float rcDistance;
+    [SerializeField]  float rayCount;
 
     private void Awake()
     {
@@ -35,7 +41,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckGrounded();
-        Vector3 origin = transform.position + Vector3.down * 0.5f;
         //if(transform.position.y < -5)
         //{
         //    Die();
@@ -44,22 +49,50 @@ public class PlayerController : MonoBehaviour
 
     public void CheckGrounded()
     {
-        RaycastHit hit;
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 0.2f, groundLayer);
+        float height = playerCollider.bounds.size.z;
+        float step = height / (rayCount - 1);
+        int groundHitCount = 0;
+        for (int i = 0; i < rayCount; i++)
+        {
+            Vector3 origin = new  Vector3(rcPoint.position.x, rcPoint.position.y, rcPoint.position.z - height / 2 + i  * step);
+            RaycastHit hit;
+            bool test = Physics.Raycast(origin, Vector3.down, out hit, rcDistance,  groundLayer);
+            if (test)
+            {
+                // Debug.Log(hit.transform.name);
+                // Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
+                groundHitCount++;
+            }
+            
+            Debug.DrawRay(origin, Vector3.down * rcDistance, test ? Color.green : Color.red);
+            if (groundHitCount == 0)
+            {
+                isGrounded = false;
+            }
+            else
+            {
+                isGrounded = true;
+            }
+        }
+        
         if (!isGrounded)
         {
             animator.SetBool("Jump", true);
             return;
         }
-
-        Debug.Log(hit.transform.name);
+        
         animator.SetBool("Jump", false);
     }
 
     private void OnDrawGizmos()
     {
-        Debug.DrawRay(transform.position + new Vector3(0, 0 , 0.5f), new Vector3(0, -0.2f, 0), Color.red);
-        Debug.DrawRay(transform.position, new Vector3(0, -0.2f, 0), Color.red);
+        // float height = playerCollider.bounds.size.z;
+        // float step = height / (rayCount - 1);
+        // for (int i = 0; i <= 9; i++)
+        // {
+        //     Vector3 origin = new  Vector3(testt.position.x, testt.position.y, testt.position.z - height / 2 + i  * step);
+        //     Debug.DrawRay(origin, Vector3.down * rcDistance, Color.red);
+        // }
     }
 
     public void Die()
@@ -88,7 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerParameters.IsAlive)
         {
-            if (collision.gameObject.CompareTag("Obstacle"))
+            if (collision.gameObject.CompareTag(CONSTANT.BoxTag))
             {
                 playerMovement.ResetCollider();
                 GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.atk_Sword);
@@ -98,11 +131,11 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.ItemManager.ChangeItem(collision.gameObject.GetComponent<ItemIndex>().index);
                 GameManager.Instance.ItemController.ItemUseTime();
             }
-            else if (collision.gameObject.CompareTag("Bridge"))
+            else if (collision.gameObject.CompareTag(CONSTANT.BridgeTag))
             {
                 playerMovement.BackToOldLane();
             }
-            else if (collision.gameObject.CompareTag("Bounce"))
+            else if (collision.gameObject.CompareTag(CONSTANT.BounceTag))
             {
                 GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.bound);
                 Animator Banimator = collision.gameObject.GetComponent<Animator>();
@@ -139,7 +172,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerParameters.IsAlive)
         {
-            if (other.gameObject.CompareTag("Item"))
+            if (other.gameObject.CompareTag(CONSTANT.ItemTag))
             {
                 GameManager.Instance.ItemManager.ChangeItem(other.gameObject.GetComponent<ItemIndex>().index);
                 GameManager.Instance.ItemController.ItemUseTime();

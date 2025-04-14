@@ -19,7 +19,7 @@ public class MagnetCoinController : ItemBase
         Collider[] colliders = Physics.OverlapBox(PointCheck.transform.position, sizePointCheck);
         foreach (Collider collider in colliders)
         {
-            if (collider.tag == "Coin")
+            if (collider.gameObject.CompareTag(CONSTANT.CoinTag))
             {
                 collider.gameObject.transform.position = Vector3.MoveTowards(collider.gameObject.transform.position, target.position, 30 * Time.deltaTime);
             }

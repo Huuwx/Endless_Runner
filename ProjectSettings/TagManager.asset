@@ -15,6 +15,7 @@ TagManager:
   - TurnGround
   - Wall
   - Item
+  - Box
   layers:
   - Default
   - TransparentFX

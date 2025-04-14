@@ -18,7 +18,7 @@ public class GroundTile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag(CONSTANT.PlayerTag))
         {
             if (spikeTrapController != null)
             {

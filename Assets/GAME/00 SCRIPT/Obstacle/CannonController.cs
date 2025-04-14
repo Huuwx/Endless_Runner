@@ -16,7 +16,7 @@ public class CannonController : ObstacleBase
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag(CONSTANT.PlayerTag))
         {
             if (GameManager.Instance.Player.playerParameters.IsImmortal)
                 return;

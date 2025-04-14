@@ -34,7 +34,7 @@ public class MagicShieldController : ItemBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Barrier")
+        if (other.gameObject.CompareTag(CONSTANT.BarrierTag))
         {
             GameManager.Instance.ParticleController.explosion.Play();
             ClearUseTime();

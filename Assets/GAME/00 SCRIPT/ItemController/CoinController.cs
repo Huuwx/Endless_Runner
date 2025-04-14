@@ -16,7 +16,7 @@ public class CoinController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.CompareTag(CONSTANT.PlayerTag))
         {
             GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.pickUpCoin);
             GameManager.Instance.UpdateCoin(point);
