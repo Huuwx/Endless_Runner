@@ -67,21 +67,19 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(origin, Vector3.down * rcDistance, test ? Color.green : Color.red);
             if (groundHitCount == 0)
             {
+                animator.SetBool(CONSTANT.Jump, true);
                 isGrounded = false;
             }
             else
             {
+                if (isGrounded)
+                    return;
+                
+                animator.SetBool(CONSTANT.Jump, false);
+                GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.jump_land);
                 isGrounded = true;
             }
         }
-        
-        if (!isGrounded)
-        {
-            animator.SetBool("Jump", true);
-            return;
-        }
-        
-        animator.SetBool("Jump", false);
     }
 
     private void OnDrawGizmos()
@@ -108,7 +106,7 @@ public class PlayerController : MonoBehaviour
         }
         playerMovement.rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
         GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.death);
-        animator.SetTrigger("Death");
+        animator.SetTrigger(CONSTANT.Death);
         GameOver();
     }
 
@@ -125,7 +123,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerMovement.ResetCollider();
                 GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.atk_Sword);
-                animator.SetTrigger("Attack");
+                animator.SetTrigger(CONSTANT.Attack);
                 collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
                 collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
                 GameManager.Instance.ItemManager.ChangeItem(collision.gameObject.GetComponent<ItemIndex>().index);
@@ -139,9 +137,9 @@ public class PlayerController : MonoBehaviour
             {
                 GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.bound);
                 Animator Banimator = collision.gameObject.GetComponent<Animator>();
-                Banimator.SetTrigger("Activate");
+                Banimator.SetTrigger(CONSTANT.Activate);
                 playerMovement.Bounce();
-                animator.SetBool("Jump", true);
+                animator.SetBool(CONSTANT.Jump, true);
             }
         }
     }

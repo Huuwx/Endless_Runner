@@ -24,7 +24,7 @@ public class GroundTile : MonoBehaviour
             {
                 foreach (var controller in spikeTrapController)
                 {
-                    controller.animator.SetTrigger("Activate");
+                    controller.animator.SetTrigger(CONSTANT.Activate);
                 }
             }
             if(cannonController != null)

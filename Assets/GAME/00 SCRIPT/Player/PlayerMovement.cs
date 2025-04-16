@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     ResetCollider();
                     GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.dash);
-                    GameManager.Instance.Player.animator.SetTrigger("swipeLeft");
+                    GameManager.Instance.Player.animator.SetTrigger(CONSTANT.SwipeLeft);
                 }
                 desiredLane--;
                 oldLane = desiredLane + 1;
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     ResetCollider();
                     GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.dash);
-                    GameManager.Instance.Player.animator.SetTrigger("swipeRight");
+                    GameManager.Instance.Player.animator.SetTrigger(CONSTANT.SwipeRight);
                 }
                 desiredLane++;
                 oldLane = desiredLane - 1;
@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.jump);
-        GameManager.Instance.Player.animator.SetBool("Jump", true);
+        GameManager.Instance.Player.animator.SetBool(CONSTANT.Jump, true);
         rb.AddForce(Vector3.up * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
     }
 
@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
         }
         boxCollider.size = new Vector3(1, 0.5f, 1);
         boxCollider.center = new Vector3(0, 0.25f, 0);
-        GameManager.Instance.Player.animator.SetBool("isSliding", true);
+        GameManager.Instance.Player.animator.SetBool(CONSTANT.Sliding, true);
 
         yield return new WaitForSeconds(1f);
 
@@ -199,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
     {
         boxCollider.size = new Vector3(1, 2.3f, 1);
         boxCollider.center = new Vector3(0, 1.1f, 0);
-        GameManager.Instance.Player.animator.SetBool("isSliding", false);
+        GameManager.Instance.Player.animator.SetBool(CONSTANT.Sliding, false);
     }
 
     public void BackToOldLane()

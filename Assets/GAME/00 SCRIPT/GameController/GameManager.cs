@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
             isStarted = true;
-            Player.animator.SetTrigger("Start");
+            Player.animator.SetTrigger(CONSTANT.Start);
             Destroy(StartingText);
         }
     }
