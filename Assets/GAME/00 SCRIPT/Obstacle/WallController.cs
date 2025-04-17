@@ -6,9 +6,9 @@ public class WallController : ObstacleBase
 {
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(CONSTANT.PlayerTag))
-        {
-            GameManager.Instance.Player.Die();
-        }
+        if (!collision.gameObject.CompareTag(CONSTANT.PlayerTag))
+            return;
+        
+        GameManager.Instance.Player.Die();
     }
 }

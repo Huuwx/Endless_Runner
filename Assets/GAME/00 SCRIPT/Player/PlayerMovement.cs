@@ -142,34 +142,33 @@ public class PlayerMovement : MonoBehaviour
     private void CheckTurn()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
-        if (hitColliders.Length != 0)
-        {
-            canTurn = true;
-            TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
-            if (SwipeManager.swipeRight && canTurn && (turnGroundController.turnDir == TurnGroundController.TURNDIR.right))
-            {
-                isZPositive = false;
-                transform.position = turnGroundController.pivot.position;
-                centerZ = turnGroundController.pivot.position.z;
-                turnGroundController.spawner.moveDirection = new Vector3(-1, 0, 0);
-                transform.rotation = Quaternion.Euler(0, 90f, 0);
-                desiredLane = 1;
-                oldLane = 1;
-            }
-            else if (SwipeManager.swipeLeft && canTurn && (turnGroundController.turnDir == TurnGroundController.TURNDIR.left))
-            {
-                isZPositive = true;
-                transform.position = turnGroundController.pivot.position;
-                center = turnGroundController.pivot.position.x;
-                turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                desiredLane = 1;
-                oldLane = 1;
-            }
-        }
-        else
+        if (hitColliders.Length == 0)
         {
             canTurn = false;
+            return;
+        }
+        
+        canTurn = true;
+        TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
+        if (SwipeManager.swipeRight && canTurn && (turnGroundController.turnDir == TurnGroundController.TURNDIR.right))
+        {
+            isZPositive = false;
+            transform.position = turnGroundController.pivot.position;
+            centerZ = turnGroundController.pivot.position.z;
+            turnGroundController.spawner.moveDirection = new Vector3(-1, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 90f, 0);
+            desiredLane = 1;
+            oldLane = 1;
+        }
+        else if (SwipeManager.swipeLeft && canTurn && (turnGroundController.turnDir == TurnGroundController.TURNDIR.left))
+        {
+            isZPositive = true;
+            transform.position = turnGroundController.pivot.position;
+            center = turnGroundController.pivot.position.x;
+            turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            desiredLane = 1;
+            oldLane = 1;
         }
     }
 

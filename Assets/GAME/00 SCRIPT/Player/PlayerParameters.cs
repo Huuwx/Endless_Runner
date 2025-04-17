@@ -15,7 +15,7 @@ public class PlayerParameters
 {
     [SerializeField] private float jumpForce = 17f;
     
-    public PlayerState State { get; set; } = PlayerState.Normal;
+    public PlayerState State { get; set; }
 
     public PlayerParameters(float jumpForce = 17f,  PlayerState playerState = PlayerState.Normal)
     {

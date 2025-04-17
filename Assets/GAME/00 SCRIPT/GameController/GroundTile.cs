@@ -18,21 +18,21 @@ public class GroundTile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(CONSTANT.PlayerTag))
+        if (!other.gameObject.CompareTag(CONSTANT.PlayerTag))
+            return;
+        
+        if (spikeTrapController != null)
         {
-            if (spikeTrapController != null)
+            foreach (var controller in spikeTrapController)
             {
-                foreach (var controller in spikeTrapController)
-                {
-                    controller.animator.SetTrigger(CONSTANT.Activate);
-                }
+                controller.animator.SetTrigger(CONSTANT.Activate);
             }
-            if(cannonController != null)
+        }
+        if (cannonController != null)
+        {
+            foreach (var controller in cannonController)
             {
-                foreach (var controller in cannonController)
-                {
-                    controller.SetIsActive(true);
-                }
+                controller.SetIsActive(true);
             }
         }
     }

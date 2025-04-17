@@ -16,12 +16,12 @@ public class CoinController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag(CONSTANT.PlayerTag))
-        {
-            GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.pickUpCoin);
-            GameManager.Instance.UpdateCoin(point);
-            Destroy(gameObject);
-        }
+        if (!other.gameObject.CompareTag(CONSTANT.PlayerTag))
+            return;
+        
+        GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.pickUpCoin);
+        GameManager.Instance.UpdateCoin(point);
+        Destroy(gameObject);
     }
 
     public int GetPoint()

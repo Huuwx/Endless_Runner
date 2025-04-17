@@ -33,17 +33,17 @@ public class MagnetCoinController : ItemBase
 
     protected override void ItemEffect()
     {
-        if (this.gameObject.activeInHierarchy)
+        if (!this.gameObject.activeInHierarchy)
+            return;
+        
+        if (useTimeCounter > 0)
         {
-            if (useTimeCounter > 0)
-            {
-                useTimeCounter -= Time.deltaTime;
-                CheckCoin();
-            }
-            else
-            {
-                ClearUseTime();
-            }
+            useTimeCounter -= Time.deltaTime;
+            CheckCoin();
+        }
+        else
+        {
+            ClearUseTime();
         }
     }
 }

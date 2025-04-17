@@ -15,14 +15,14 @@ public class ItemManager : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (_listItems.Count < this.transform.childCount)
+        if (_listItems.Count >= this.transform.childCount)
+            return;
+        
+        for (int i = _listItems.Count; i < this.transform.childCount; i++)
         {
-            for (int i = _listItems.Count; i < this.transform.childCount; i++)
+            if (this.transform.GetChild(i).gameObject.GetComponent<ItemBase>() != null)
             {
-                if (this.transform.GetChild(i).gameObject.GetComponent<ItemBase>() != null)
-                {
-                    _listItems.Add(this.transform.GetChild(i).gameObject.GetComponent<ItemBase>());
-                }
+                _listItems.Add(this.transform.GetChild(i).gameObject.GetComponent<ItemBase>());
             }
         }
     }

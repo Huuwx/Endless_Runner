@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rcDistance;
     [SerializeField]  float rayCount;
 
+    
+    private ItemIndex checkItem;
+
     private void Awake()
     {
         isGrounded = false;
@@ -119,17 +122,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerParameters.IsAlive)
         {
-            if (collision.gameObject.CompareTag(CONSTANT.BoxTag))
-            {
-                playerMovement.ResetCollider();
-                GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.atk_Sword);
-                animator.SetTrigger(CONSTANT.Attack);
-                collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
-                collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
-                GameManager.Instance.ItemManager.ChangeItem(collision.gameObject.GetComponent<ItemIndex>().index);
-                GameManager.Instance.ItemController.ItemUseTime();
-            }
-            else if (collision.gameObject.CompareTag(CONSTANT.BridgeTag))
+            if (collision.gameObject.CompareTag(CONSTANT.BridgeTag))
             {
                 playerMovement.BackToOldLane();
             }
@@ -141,6 +134,19 @@ public class PlayerController : MonoBehaviour
                 playerMovement.Bounce();
                 animator.SetBool(CONSTANT.Jump, true);
             }
+
+            checkItem = collision.gameObject.GetComponent<ItemIndex>();
+            if (!checkItem)
+                return;
+            
+            playerMovement.ResetCollider();
+            GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.atk_Sword);
+            animator.SetTrigger(CONSTANT.Attack);
+            collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
+            collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
+            GameManager.Instance.ItemManager.ChangeItem(checkItem.index);
+            GameManager.Instance.ItemController.ItemUseTime();
+            
         }
     }
 
@@ -170,12 +176,13 @@ public class PlayerController : MonoBehaviour
     {
         if (playerParameters.IsAlive)
         {
-            if (other.gameObject.CompareTag(CONSTANT.ItemTag))
-            {
-                GameManager.Instance.ItemManager.ChangeItem(other.gameObject.GetComponent<ItemIndex>().index);
-                GameManager.Instance.ItemController.ItemUseTime();
-                other.gameObject.SetActive(false);
-            }
+            checkItem = other.gameObject.GetComponent<ItemIndex>();
+            if (!checkItem)
+                return;
+            
+            GameManager.Instance.ItemManager.ChangeItem(checkItem.index);
+            GameManager.Instance.ItemController.ItemUseTime();
+            other.gameObject.SetActive(false);
         }
     }
 }

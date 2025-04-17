@@ -8,10 +8,10 @@ public class CannonController : ObstacleBase
 
     void Update()
     {
-        if (isActive)
-        {
-            transform.Translate(Vector3.back * 20 * Time.deltaTime, Space.World);
-        }
+        if (!isActive)
+            return;
+        
+        transform.Translate(Vector3.back * 20 * Time.deltaTime, Space.World);
     }
 
     protected override void OnCollisionEnter(Collision collision)
