@@ -70,17 +70,20 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(origin, Vector3.down * rcDistance, test ? Color.green : Color.red);
             if (groundHitCount == 0)
             {
-                animator.SetBool(CONSTANT.Jump, true);
+                if (!isGrounded)
+                    continue;
+                
                 isGrounded = false;
+                animator.SetBool(CONSTANT.Jump, true);
             }
             else
             {
                 if (isGrounded)
-                    return;
+                    continue;
                 
+                isGrounded = true;
                 animator.SetBool(CONSTANT.Jump, false);
                 GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.jump_land);
-                isGrounded = true;
             }
         }
     }
@@ -89,9 +92,9 @@ public class PlayerController : MonoBehaviour
     {
         // float height = playerCollider.bounds.size.z;
         // float step = height / (rayCount - 1);
-        // for (int i = 0; i <= 9; i++)
+        // for (int i = 0; i < rayCount; i++)
         // {
-        //     Vector3 origin = new  Vector3(testt.position.x, testt.position.y, testt.position.z - height / 2 + i  * step);
+        //     Vector3 origin = new  Vector3(rcPoint.position.x, rcPoint.position.y, rcPoint.position.z - height / 2 + i  * step);
         //     Debug.DrawRay(origin, Vector3.down * rcDistance, Color.red);
         // }
     }
