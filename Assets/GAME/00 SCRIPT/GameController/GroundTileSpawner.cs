@@ -6,7 +6,7 @@ using UnityEngine;
 public class GroundTileSpawner : MonoBehaviour
 {
     public enum AXIS { XPositive, XNegative, ZPositive, ZNegative }
-
+    
     public GameObject[] grounds;
     public int initialSpawnCount = 15;
     public float destoryZone = 300;
@@ -62,11 +62,12 @@ public class GroundTileSpawner : MonoBehaviour
 
 
             lastGround = ground;
+            ObjectPooling.Instance.AddGround(ground);
             nextSpawnPoint = ground.transform.GetChild(1).position;
         }
     }
 
-    public void DestroyChunk(RunnerGroundTile thisGround)
+    public void SpawnNextGround(RunnerGroundTile thisGround)
     {
         nextSpawnPoint = lastGround.transform.GetChild(1).position;
         //switch (axis)
@@ -88,12 +89,27 @@ public class GroundTileSpawner : MonoBehaviour
         //        break;
         //}
 
-        int groundIndex = Random.Range(0, grounds.Length);
+        // int groundIndex = Random.Range(0, grounds.Length);
+        //
+        // GameObject ground = Instantiate(grounds[groundIndex], nextSpawnPoint, Quaternion.identity, groundSpawner);
+        // ground.SetActive(true);
+        // ground.GetComponent<RunnerGroundTile>().spawner = this;
 
-        GameObject ground = Instantiate(grounds[groundIndex], nextSpawnPoint, Quaternion.identity, groundSpawner);
-        ground.SetActive(true);
-        ground.GetComponent<RunnerGroundTile>().spawner = this;
-
-        lastGround = ground.gameObject;
+        GameObject ground = ObjectPooling.Instance.GetGround();
+        if (ground == null)
+        {
+            int groundIndex = Random.Range(0, grounds.Length);
+            
+            GameObject g = Instantiate(grounds[groundIndex], nextSpawnPoint, Quaternion.identity, groundSpawner);
+            g.GetComponent<RunnerGroundTile>().spawner = this;
+            ObjectPooling.Instance.AddGround(g);
+            lastGround = g.gameObject;
+        }
+        else
+        {
+            ground.transform.position = nextSpawnPoint;
+            ground.gameObject.SetActive(true);
+            lastGround = ground.gameObject;
+        }
     }
 }

@@ -26,16 +26,18 @@ public class RunnerGroundTile : MonoBehaviour
             case GroundTileSpawner.AXIS.XPositive:
                 if (transform.position.x > spawner.destoryZone)
                 {
-                    spawner.DestroyChunk(this);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
+                    spawner.SpawnNextGround(this);
+                    // Destroy(gameObject);
                 }
                 break;
 
             case GroundTileSpawner.AXIS.XNegative:
                 if (transform.position.x < -spawner.destoryZone)
                 {
-                    spawner.DestroyChunk(this);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
+                    spawner.SpawnNextGround(this);
+                    //Destroy(gameObject);
                 }
 
                 break;
@@ -43,16 +45,18 @@ public class RunnerGroundTile : MonoBehaviour
             case GroundTileSpawner.AXIS.ZPositive:
                 if (transform.position.z > spawner.destoryZone)
                 {
-                    spawner.DestroyChunk(this);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
+                    spawner.SpawnNextGround(this);
+                    //Destroy(gameObject);
                 }
                 break;
 
             case GroundTileSpawner.AXIS.ZNegative:
                 if (transform.position.z < -spawner.destoryZone)
                 {
-                    spawner.DestroyChunk(this);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
+                    spawner.SpawnNextGround(this);
+                    //Destroy(gameObject);
                 }
                 break;
         }
