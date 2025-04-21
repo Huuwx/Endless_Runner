@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1848286550195892574}
   - component: {fileID: 3248643910333981546}
   - component: {fileID: 5997703454048223826}
-  - component: {fileID: -616978465413658836}
+  - component: {fileID: 39446280812092033}
   m_Layer: 0
   m_Name: X2Coin
   m_TagString: Item
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
---- !u!114 &-616978465413658836
+--- !u!114 &39446280812092033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8560014468394221717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a6d66aaf8938b0439928e2ed72c12f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c4978ec4468c484ea23d27b345b3382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1

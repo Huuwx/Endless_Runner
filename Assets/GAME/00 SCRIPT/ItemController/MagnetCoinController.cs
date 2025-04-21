@@ -33,7 +33,7 @@ public class MagnetCoinController : ItemBase
 
     protected override void ItemEffect()
     {
-        if (!this.gameObject.activeInHierarchy)
+        if (!this.gameObject.activeInHierarchy || !GameManager.Instance.Player.playerParameters.IsAlive)
             return;
         
         if (useTimeCounter > 0)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
+    Vector3 startPos;
+    
     public Animator animator;
 
     private int point = 1;
@@ -12,6 +14,7 @@ public class CoinController : MonoBehaviour
     {
         point = 1;
         animator = GetComponent<Animator>();
+        startPos = transform.localPosition;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +24,7 @@ public class CoinController : MonoBehaviour
         
         GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.pickUpCoin);
         GameManager.Instance.UpdateCoin(point);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public int GetPoint()
@@ -32,5 +35,11 @@ public class CoinController : MonoBehaviour
     public void SetPoint(int value)
     {
         point = value;
+    }
+
+    public void Activate()
+    {
+        transform.localPosition = startPos;
+        this.gameObject.SetActive(true);
     }
 }

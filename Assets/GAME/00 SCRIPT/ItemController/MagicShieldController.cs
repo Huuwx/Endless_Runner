@@ -12,7 +12,7 @@ public class MagicShieldController : ItemBase
 
     protected override void ItemEffect()
     {
-        if (!this.gameObject.activeInHierarchy)
+        if (!this.gameObject.activeInHierarchy || !GameManager.Instance.Player.playerParameters.IsAlive)
             return;
         
         if (useTimeCounter > 0)
@@ -30,15 +30,5 @@ public class MagicShieldController : ItemBase
     {
         base.ClearUseTime();
         GameManager.Instance.Player.playerParameters.State = PlayerState.Normal;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag(CONSTANT.BarrierTag))
-        {
-            GameManager.Instance.ParticleController.explosion.Play();
-            ClearUseTime();
-            other.gameObject.SetActive(false);
-        }
     }
 }

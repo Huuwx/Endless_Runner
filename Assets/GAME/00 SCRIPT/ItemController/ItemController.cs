@@ -16,4 +16,9 @@ public class ItemController : MonoBehaviour
         _item.ResetCounterTime();
         _item.gameObject.SetActive(true);
     }
+
+    public void ClearUseTime()
+    {
+        _item.ClearUseTime();
+    }
 }

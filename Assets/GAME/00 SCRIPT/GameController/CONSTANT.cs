@@ -24,4 +24,6 @@ public static class CONSTANT
     public static readonly string Sliding = "isSliding";
     public static readonly string Activate = "Activate";
     public static readonly string X2 = "X2";
+
+    public static readonly int ShieldItemIndex = 2;
 }

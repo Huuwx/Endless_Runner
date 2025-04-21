@@ -149,7 +149,6 @@ public class PlayerController : MonoBehaviour
             collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
             GameManager.Instance.ItemManager.ChangeItem(checkItem.index);
             GameManager.Instance.ItemController.ItemUseTime();
-            
         }
     }
 

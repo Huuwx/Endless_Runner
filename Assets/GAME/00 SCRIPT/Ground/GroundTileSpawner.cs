@@ -29,7 +29,7 @@ public class GroundTileSpawner : MonoBehaviour
     [SerializeField] Transform groundSpawner;
 
 
-    void Awake()
+    void Start()
     {
         groundSpawner = gameObject.transform;
 
