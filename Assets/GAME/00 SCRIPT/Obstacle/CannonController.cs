@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,13 @@ using UnityEngine;
 public class CannonController : ObstacleBase
 {
     private bool isActive = false;
+    
+    Vector3 startPosition;
+
+    private void Awake()
+    {
+        startPosition = transform.localPosition;
+    }
 
     void Update()
     {
@@ -41,5 +49,11 @@ public class CannonController : ObstacleBase
     public void SetIsActive(bool value)
     {
         isActive = value;
+    }
+    
+    public override void Activate()
+    {
+        this.transform.localPosition = startPosition;
+        base.Activate();
     }
 }

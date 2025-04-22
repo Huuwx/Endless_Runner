@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,17 @@ public class GroundTile : MonoBehaviour
     //    }
     //}
 
+    // private void OnEnable()
+    // {
+    //     if (spikeTrapController != null)
+    //     {
+    //         foreach (var controller in spikeTrapController)
+    //         {
+    //             controller.animator.SetBool(CONSTANT.Activate, false);
+    //         }
+    //     }
+    // }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag(CONSTANT.PlayerTag))
@@ -25,7 +37,7 @@ public class GroundTile : MonoBehaviour
         {
             foreach (var controller in spikeTrapController)
             {
-                controller.animator.SetTrigger(CONSTANT.Activate);
+                controller.animator.SetBool(CONSTANT.Activate, true);
             }
         }
         if (cannonController != null)

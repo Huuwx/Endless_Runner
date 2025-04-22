@@ -1,9 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleBase : MonoBehaviour
+public abstract class ObstacleBase : MonoBehaviour
 {
+    public virtual void Activate()
+    {
+        Debug.Log(this.gameObject.name + " is active");
+        this.gameObject.SetActive(true);
+    }
+
     protected virtual void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag(CONSTANT.PlayerTag))

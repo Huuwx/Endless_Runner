@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,7 @@ public class CoinController : MonoBehaviour
     public void Activate()
     {
         transform.localPosition = startPos;
+        animator.SetBool(CONSTANT.X2, false);
         this.gameObject.SetActive(true);
     }
 }
