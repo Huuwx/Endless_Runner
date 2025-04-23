@@ -51,9 +51,15 @@ public class CannonController : ObstacleBase
         isActive = value;
     }
     
-    public override void Activate()
+    public override void ResetActive()
     {
-        this.transform.localPosition = startPosition;
-        base.Activate();
+        isActive = false;
+        transform.localPosition = startPosition;
+        base.ResetActive();
+    }
+
+    public override void Active()
+    {
+        isActive = true;
     }
 }

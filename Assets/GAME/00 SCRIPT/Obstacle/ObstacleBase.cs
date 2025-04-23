@@ -5,9 +5,10 @@ using UnityEngine;
 
 public abstract class ObstacleBase : MonoBehaviour
 {
-    public virtual void Activate()
+    public virtual void Active(){}
+    
+    public virtual void ResetActive()
     {
-        Debug.Log(this.gameObject.name + " is active");
         this.gameObject.SetActive(true);
     }
 

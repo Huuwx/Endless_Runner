@@ -44,7 +44,21 @@ public class GroundController : MonoBehaviour
 
         foreach (ObstacleBase obstacle in obstacles)
         {
-            obstacle.Activate();
+            obstacle.ResetActive();
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag(CONSTANT.PlayerTag))
+            return;
+        
+        if (obstacles != null)
+        {
+            foreach (var controller in obstacles)
+            {
+                controller.Active();
+            }
         }
     }
 }

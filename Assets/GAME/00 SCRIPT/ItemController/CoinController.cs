@@ -6,16 +6,18 @@ using UnityEngine;
 public class CoinController : MonoBehaviour
 {
     Vector3 startPos;
-    
-    public Animator animator;
 
     private int point = 1;
+    
+    SkinnedMeshRenderer skinnedMeshRenderer;
+    [SerializeField] Material baseMaterial;
+    [SerializeField] Material x2Material;
 
     private void Awake()
     {
         point = 1;
-        animator = GetComponent<Animator>();
         startPos = transform.localPosition;
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,7 +43,22 @@ public class CoinController : MonoBehaviour
     public void Activate()
     {
         transform.localPosition = startPos;
-        animator.SetBool(CONSTANT.X2, false);
+        point = 1;
+        x2Deactivate();
         this.gameObject.SetActive(true);
+    }
+
+    public void x2Activate()
+    {
+        Material[] mats = skinnedMeshRenderer.materials;
+        mats[0] = x2Material;
+        skinnedMeshRenderer.materials = mats;
+    }
+
+    public void x2Deactivate()
+    {
+        Material[] mats = skinnedMeshRenderer.materials;
+        mats[0] = baseMaterial;
+        skinnedMeshRenderer.materials = mats;
     }
 }

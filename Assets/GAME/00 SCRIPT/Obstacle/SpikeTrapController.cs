@@ -12,9 +12,14 @@ public class SpikeTrapController : ObstacleBase
         animator = GetComponent<Animator>();
     }
 
-    public override void Activate()
+    public override void ResetActive()
     {
-        base.Activate();
+        base.ResetActive();
         animator.SetBool(CONSTANT.Activate, false);
+    }
+
+    public override void Active()
+    {
+        animator.SetBool(CONSTANT.Activate, true);
     }
 }

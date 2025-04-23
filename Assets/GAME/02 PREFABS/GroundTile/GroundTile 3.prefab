@@ -75,7 +75,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4471507943402213445}
   - component: {fileID: 8309721314480746011}
-  - component: {fileID: 7901493993710181029}
   - component: {fileID: 3432206665881920488}
   - component: {fileID: -7297580183849087896}
   m_Layer: 0
@@ -129,21 +128,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.041369, y: 6.8533564, z: 40.154686}
   m_Center: {x: 0.028761387, y: 2.9266782, z: 10.0208025}
---- !u!114 &7901493993710181029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026619498105937804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709c728938e6fe849815e1e045c0971f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spikeTrapController: []
-  cannonController:
-  - {fileID: 638884967452770634}
 --- !u!114 &3432206665881920488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,9 +1536,6 @@ PrefabInstance:
       addedObject: {fileID: 4631223260555947156}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6230148291561053459}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 638884967452770634}
   m_SourcePrefab: {fileID: 100100000, guid: 7a142c27d393b72478e1d3c9fe4bcebf, type: 3}
 --- !u!4 &1565521758816600121 stripped
@@ -1588,33 +1569,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.340451, y: 2.9601285, z: 3.3989627}
   m_Center: {x: -0.5851121, y: 0.59974086, z: 0.058511257}
---- !u!54 &6230148291561053459
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2229854739906484867}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &638884967452770634
 MonoBehaviour:
   m_ObjectHideFlags: 0

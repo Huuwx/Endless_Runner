@@ -22,7 +22,7 @@ public class X2CoinItemController : ItemBase
             foreach (GameObject coinObject in coinObjects)
             {
                 CoinController coinController = coinObject.GetComponent<CoinController>();
-                coinController.animator.SetBool(CONSTANT.X2, true);
+                coinController.x2Activate();
                 coinController.SetPoint(2);
             }
         }
@@ -31,7 +31,7 @@ public class X2CoinItemController : ItemBase
             foreach (GameObject coinObject in coinObjects)
             {
                 CoinController coinController = coinObject.GetComponent<CoinController>();
-                coinController.animator.SetBool(CONSTANT.X2, false);
+                coinController.x2Deactivate();
                 coinController.SetPoint(1);
             }
 
