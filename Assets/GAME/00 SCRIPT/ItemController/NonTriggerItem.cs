@@ -6,11 +6,17 @@ public class NonTriggerItem : ItemIndex
 {
     private Rigidbody rb;
 
-    protected override void Awake()
+    public override void Init()
     {
-        base.Awake();
+        base.Init();
         rb = GetComponent<Rigidbody>();
     }
+    
+    // protected override void Awake()
+    // {
+    //     base.Awake();
+    //     rb = GetComponent<Rigidbody>();
+    // }
 
     public override void Activate()
     {

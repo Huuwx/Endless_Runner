@@ -13,12 +13,19 @@ public class CoinController : MonoBehaviour
     [SerializeField] Material baseMaterial;
     [SerializeField] Material x2Material;
 
-    private void Awake()
+    public void Init()
     {
         point = 1;
         startPos = transform.localPosition;
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
+    
+    // private void Awake()
+    // {
+    //     point = 1;
+    //     startPos = transform.localPosition;
+    //     skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+    // }
 
     private void OnTriggerEnter(Collider other)
     {

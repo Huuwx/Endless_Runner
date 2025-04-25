@@ -5,24 +5,9 @@ using UnityEngine;
 
 public class ObjectPooling : MonoBehaviour
 {
-    private static ObjectPooling instance;
-    public static ObjectPooling Instance { get { return instance; } }
-    
     List<GameObject> ground = new List<GameObject>();
     
     Dictionary<GameObject, List<GameObject>> _pool = new Dictionary<GameObject, List<GameObject>>();
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     public GameObject GetGround()
     {

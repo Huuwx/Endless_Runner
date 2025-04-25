@@ -18,7 +18,7 @@ public class GroundTileSpawner : MonoBehaviour
     public Vector3 moveDirection = new Vector3(-1, 0, 0);
 
     public float movingSpeed = 15f;
-    public float maxSpeed = 25f;
+    public float maxSpeed = 20f;
 
 
     //public float groundSize = 30;
@@ -62,7 +62,7 @@ public class GroundTileSpawner : MonoBehaviour
 
 
             lastGround = ground;
-            ObjectPooling.Instance.AddGround(ground);
+            GameManager.Instance.ObjectPooling.AddGround(ground);
             nextSpawnPoint = ground.transform.GetChild(1).position;
         }
     }
@@ -95,14 +95,14 @@ public class GroundTileSpawner : MonoBehaviour
         // ground.SetActive(true);
         // ground.GetComponent<RunnerGroundTile>().spawner = this;
 
-        GameObject ground = ObjectPooling.Instance.GetGround();
-        if (ground == null)
+        GameObject ground = GameManager.Instance.ObjectPooling.GetGround();
+        if (ReferenceEquals(ground, null))
         {
             int groundIndex = Random.Range(0, grounds.Length);
             
             GameObject g = Instantiate(grounds[groundIndex], nextSpawnPoint, Quaternion.identity, groundSpawner);
             g.GetComponent<RunnerGroundTile>().spawner = this;
-            ObjectPooling.Instance.AddGround(g);
+            GameManager.Instance.ObjectPooling.AddGround(g);
             lastGround = g.gameObject;
         }
         else

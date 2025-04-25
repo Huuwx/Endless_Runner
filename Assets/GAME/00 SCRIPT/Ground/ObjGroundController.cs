@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundController : MonoBehaviour
+public class ObjGroundController : MonoBehaviour
 {
     List<ItemIndex> items = new List<ItemIndex>();
     List<CoinController> coins = new List<CoinController>();
@@ -14,12 +14,14 @@ public class GroundController : MonoBehaviour
         ItemIndex[] i = this.GetComponentsInChildren<ItemIndex>();
         foreach (ItemIndex item in i)
         {
+            item.Init();
             items.Add(item);
         }
         
         CoinController[] co = this.GetComponentsInChildren<CoinController>();
         foreach (CoinController coin in co)
         {
+            coin.Init();
             coins.Add(coin);
         }
         

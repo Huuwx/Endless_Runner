@@ -27,18 +27,28 @@ public class PlayerController : MonoBehaviour
     
     private ItemIndex checkItem;
 
-    private void Awake()
+
+    public void Init()
     {
         isGrounded = false;
         playerCollider = GetComponent<Collider>();
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        animator = gameObject.GetComponentInChildren<Animator>();
+        playerMovement.Init();
     }
+    
+    // private void Awake()
+    // {
+    //     isGrounded = false;
+    //     playerCollider = GetComponent<Collider>();
+    //     playerMovement = gameObject.GetComponent<PlayerMovement>();
+    // }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        animator = gameObject.GetComponentInChildren<Animator>();
-        playerMovement = gameObject.GetComponent<PlayerMovement>();
-    }
+    // void Start()
+    // {
+    //     animator = gameObject.GetComponentInChildren<Animator>();
+    // }
 
     // Update is called once per frame
     void Update()

@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] SceneController _sceneController;
     public SceneController SceneController { get { return _sceneController; } }
+    
+    [SerializeField] ObjectPooling _objectPooling;
+    public ObjectPooling ObjectPooling { get { return _objectPooling; } }
 
     [Header("-----UI-----")]
     [SerializeField] TextMeshProUGUI StartingText;
@@ -39,6 +42,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOver;
     public bool isGameOver;
 
+
+    void Init()
+    {
+        isGameOver = false;
+        isStarted = false;
+        coinNumber = 0;
+        coinNumberTxt.text = coinNumber.ToString();
+    }
+    
     private void Awake()
     {
         if (instance == null)
@@ -49,16 +61,18 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Init();
+        Player.Init();
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        isGameOver = false;
-        isStarted = false;
-        coinNumber = 0;
-        coinNumberTxt.text = coinNumber.ToString();
-    }
+    // void Start()
+    // {
+    //     isGameOver = false;
+    //     isStarted = false;
+    //     coinNumber = 0;
+    //     coinNumberTxt.text = coinNumber.ToString();
+    // }
 
     // Update is called once per frame
     void Update()

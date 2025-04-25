@@ -22,19 +22,29 @@ public class PlayerMovement : MonoBehaviour
 
     //[SerializeField] float speed = 0f;
 
-    private void Awake()
+
+    public void Init()
     {
+        rb = GetComponent<Rigidbody>();
+        boxCollider = rb.GetComponent<BoxCollider>();
         center = 0;
         isZPositive = true;
         canTurn = false;
     }
+    
+    // private void Awake()
+    // {
+    //     center = 0;
+    //     isZPositive = true;
+    //     canTurn = false;
+    // }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        boxCollider = rb.GetComponent<BoxCollider>();
-    }
+    // void Start()
+    // {
+    //     rb = GetComponent<Rigidbody>();
+    //     boxCollider = rb.GetComponent<BoxCollider>();
+    // }
 
     // Update is called once per frame
     void Update()

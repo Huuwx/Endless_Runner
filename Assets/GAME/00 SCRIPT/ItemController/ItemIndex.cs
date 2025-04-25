@@ -9,10 +9,14 @@ public abstract class ItemIndex : MonoBehaviour
     
     public int index;
 
-    protected virtual void Awake()
+    public virtual void Init()
     {
         startPos = transform.localPosition;
     }
+    // protected virtual void Awake()
+    // {
+    //     startPos = transform.localPosition;
+    // }
 
     public virtual void Activate()
     {

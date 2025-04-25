@@ -15,7 +15,7 @@ public class RunnerGroundTile : MonoBehaviour
             {
                 spawner.movingSpeed += 0.005f * Time.deltaTime;
             }
-            transform.Translate(spawner.moveDirection * spawner.movingSpeed * Time.deltaTime);
+            transform.Translate(spawner.moveDirection * (spawner.movingSpeed * Time.deltaTime));
         }
     }
 

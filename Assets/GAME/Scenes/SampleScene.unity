@@ -3410,6 +3410,7 @@ MonoBehaviour:
   _itemController: {fileID: 6708455215971219953}
   _particleController: {fileID: 1319860150}
   _sceneController: {fileID: 0}
+  _objectPooling: {fileID: 1810369205}
   StartingText: {fileID: 825579297}
   isStarted: 0
   coinNumberTxt: {fileID: 19669991}
