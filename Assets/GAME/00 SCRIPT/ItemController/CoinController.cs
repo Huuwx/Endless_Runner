@@ -50,6 +50,7 @@ public class CoinController : MonoBehaviour
     public void Activate()
     {
         transform.localPosition = startPos;
+        transform.rotation = Quaternion.identity;
         point = 1;
         x2Deactivate();
         this.gameObject.SetActive(true);

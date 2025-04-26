@@ -1,3 +1,4 @@
+using System;
 using AmazingAssets.CurvedWorld.Example;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,12 @@ using UnityEngine;
 public class RunnerGroundTile : MonoBehaviour
 {
     public GroundTileSpawner spawner;
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
@@ -21,6 +28,11 @@ public class RunnerGroundTile : MonoBehaviour
 
     void FixedUpdate()
     {
+        // if (GameManager.Instance.Player.playerParameters.IsAlive && GameManager.Instance.isStarted)
+        // {
+        //     rb.MovePosition(rb.position + spawner.moveDirection * (spawner.movingSpeed * Time.fixedDeltaTime));
+        // }
+
         switch (spawner.axis)
         {
             case GroundTileSpawner.AXIS.XPositive:

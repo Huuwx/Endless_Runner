@@ -8,6 +8,8 @@ public class ObjGroundController : MonoBehaviour
     List<ItemIndex> items = new List<ItemIndex>();
     List<CoinController> coins = new List<CoinController>();
     List<ObstacleBase> obstacles = new List<ObstacleBase>();
+    
+    Dictionary<GameObject, List<GameObject>> _pool = new Dictionary<GameObject, List<GameObject>>();
 
     private void Start()
     {
@@ -16,6 +18,15 @@ public class ObjGroundController : MonoBehaviour
         {
             item.Init();
             items.Add(item);
+            // if (_pool.ContainsKey(item.gameObject))
+            // {
+            //     _pool[item.gameObject].Add(item.gameObject);
+            // }
+            // else
+            // {
+            //     _pool.Add(item.gameObject, new List<GameObject>());
+            //     _pool[item.gameObject].Add(item.gameObject);
+            // }
         }
         
         CoinController[] co = this.GetComponentsInChildren<CoinController>();
@@ -23,12 +34,31 @@ public class ObjGroundController : MonoBehaviour
         {
             coin.Init();
             coins.Add(coin);
+            // if (_pool.ContainsKey(coin.gameObject))
+            // {
+            //     _pool[coin.gameObject].Add(coin.gameObject);
+            // }
+            // else
+            // {
+            //     _pool.Add(coin.gameObject, new List<GameObject>());
+            //     _pool[coin.gameObject].Add(coin.gameObject);
+            // }
         }
         
         ObstacleBase[] ob = this.GetComponentsInChildren<ObstacleBase>();
         foreach (ObstacleBase obj in ob)
         {
             obstacles.Add(obj);
+            // if (_pool.ContainsKey(obj.gameObject))
+            // {
+            //     //items.Add(item);
+            //     _pool[obj.gameObject].Add(obj.gameObject);
+            // }
+            // else
+            // {
+            //     _pool.Add(obj.gameObject, new List<GameObject>());
+            //     _pool[obj.gameObject].Add(obj.gameObject);
+            // }
         }
     }
 
