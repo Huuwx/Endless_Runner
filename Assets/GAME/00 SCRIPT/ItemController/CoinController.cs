@@ -32,7 +32,7 @@ public class CoinController : MonoBehaviour
         if (!other.gameObject.CompareTag(CONSTANT.PlayerTag))
             return;
         
-        GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.pickUpCoin);
+        GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.pickUpCoin);
         GameManager.Instance.UpdateCoin(point);
         gameObject.SetActive(false);
     }

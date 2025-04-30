@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
                 if (GameManager.Instance.Player.isGrounded)
                 {
                     ResetCollider();
-                    GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.dash);
+                    GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.dash);
                     GameManager.Instance.Player.animator.SetTrigger(CONSTANT.SwipeLeft);
                 }
                 desiredLane--;
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
                 if (GameManager.Instance.Player.isGrounded)
                 {
                     ResetCollider();
-                    GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.dash);
+                    GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.dash);
                     GameManager.Instance.Player.animator.SetTrigger(CONSTANT.SwipeRight);
                 }
                 desiredLane++;
@@ -184,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.jump);
+        GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.jump);
         GameManager.Instance.Player.animator.SetBool(CONSTANT.Jump, true);
         rb.AddForce(Vector3.up * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
     }

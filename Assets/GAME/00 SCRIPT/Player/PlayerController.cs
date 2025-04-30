@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 
                 isGrounded = true;
                 animator.SetBool(CONSTANT.Jump, false);
-                GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.jump_land);
+                GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.jump_land);
             }
         }
     }
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
             playerMovement.rb.AddForce(new Vector3(-1, 1, 0) * 5, ForceMode.Impulse);
         }
         playerMovement.rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
-        GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.death);
+        GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.death);
         animator.SetTrigger(CONSTANT.Death);
         GameOver();
     }
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (collision.gameObject.CompareTag(CONSTANT.BounceTag))
             {
-                GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.bound);
+                GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.bound);
                 Animator Banimator = collision.gameObject.GetComponent<Animator>();
                 Banimator.SetTrigger(CONSTANT.Activate);
                 playerMovement.Bounce();
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
                 return;
             
             playerMovement.ResetCollider();
-            GameManager.Instance.SoundController.PlayOneShot(GameManager.Instance.SoundController.atk_Sword);
+            GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.atk_Sword);
             animator.SetTrigger(CONSTANT.Attack);
             collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
             collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));

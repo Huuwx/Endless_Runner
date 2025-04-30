@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,9 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerController player;
     public PlayerController Player { get { return player; } }
     
-    [SerializeField] SoundController soundController;
-    public SoundController SoundController { get { return soundController; } }
-    
     [SerializeField] private ItemManager _itemManager;
     public ItemManager ItemManager { get { return _itemManager; } }
     
@@ -25,9 +21,6 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] ParticleSystemController _particleController;
     public ParticleSystemController ParticleController { get { return _particleController; } }
-    
-    [SerializeField] SceneController _sceneController;
-    public SceneController SceneController { get { return _sceneController; } }
     
     [SerializeField] ObjectPooling _objectPooling;
     public ObjectPooling ObjectPooling { get { return _objectPooling; } }
@@ -81,7 +74,7 @@ public class GameManager : MonoBehaviour
         {
             if(isGameOver)
             {
-                SceneManager.LoadScene("SampleScene");
+                GameController.Instance.SceneController.LoadSceneWithName("SampleScene");
                 return;
             }
             isStarted = true;
