@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,15 +10,19 @@ public class ObjectPooling : MonoBehaviour
 
     public GameObject GetGround()
     {
+        List<GameObject> inactiveGrounds = new List<GameObject>();
         foreach (GameObject g in ground)
         {
             if (g.activeSelf)
                 continue;
             
-            return g;
+            inactiveGrounds.Add(g);
         }
-
-        return null;
+        if (inactiveGrounds.Count == 0)
+            return null;
+        
+        int groundIndex = Random.Range(0, inactiveGrounds.Count);
+        return inactiveGrounds[groundIndex];
     }
 
     public void AddGround(GameObject g)

@@ -9,6 +9,7 @@ public class GroundTileSpawner : MonoBehaviour
     
     public GameObject[] grounds;
     public int initialSpawnCount = 15;
+    [SerializeField] private int extraGround = 5;
     public float destoryZone = 300;
 
     [Space(10)]
@@ -32,12 +33,16 @@ public class GroundTileSpawner : MonoBehaviour
     void Start()
     {
         groundSpawner = gameObject.transform;
+        SpawnActiveGround();
+        SpawnInactiveGround();
+    }
 
+    void SpawnActiveGround()
+    {
         for (int i = 0; i < initialSpawnCount; i++)
         {
             int groundIndex = Random.Range(0, grounds.Length);
             GameObject ground = (GameObject)Instantiate(grounds[groundIndex], groundSpawner);
-            ground.SetActive(true);
 
             ground.GetComponent<RunnerGroundTile>().spawner = this;
 
@@ -66,7 +71,37 @@ public class GroundTileSpawner : MonoBehaviour
             nextSpawnPoint = ground.transform.GetChild(1).position;
         }
     }
+    
+    void SpawnInactiveGround()
+    {
+        for (int i = 0; i < extraGround; i++)
+        {
+            int groundIndex = Random.Range(0, grounds.Length);
+            GameObject ground = (GameObject)Instantiate(grounds[groundIndex], groundSpawner);
+            ground.SetActive(false);
 
+            ground.GetComponent<RunnerGroundTile>().spawner = this;
+            switch (axis)
+            {
+                case AXIS.XPositive:
+                    break;
+
+                case AXIS.XNegative:
+                    break;
+
+                case AXIS.ZPositive:
+                    moveDirection = new Vector3(0, 0, -1);
+                    break;
+
+                case AXIS.ZNegative:
+                    moveDirection = new Vector3(0, 0, -1);
+                    break;
+            }
+
+            GameManager.Instance.ObjectPooling.AddGround(ground);
+        }
+    }
+    
     public void SpawnNextGround(RunnerGroundTile thisGround)
     {
         nextSpawnPoint = lastGround.transform.GetChild(1).position;
