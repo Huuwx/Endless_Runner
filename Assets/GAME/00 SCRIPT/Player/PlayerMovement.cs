@@ -6,7 +6,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private BoxCollider boxCollider;
-    public Rigidbody rb;
+    private Rigidbody rb;
+    public Rigidbody Rb
+    {
+        get { return rb; }
+        set { rb = value; }
+    }
 
     private int oldLane = 1;
     private int desiredLane = 1;
@@ -18,7 +23,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask turnLayer;
 
     private bool isZPositive = true;
+    public bool IsZPositive
+    {
+        get { return isZPositive; }
+        set { isZPositive = value; }
+    }
     private bool canTurn = false;
+    public bool CanTurn
+    {
+        get { return canTurn; }
+        set { canTurn = value; }
+    }
 
     //[SerializeField] float speed = 0f;
 
@@ -180,6 +195,32 @@ public class PlayerMovement : MonoBehaviour
             desiredLane = 1;
             oldLane = 1;
         }
+    }
+
+    public void TurnRight()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
+        TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
+        isZPositive = false;
+        transform.position = turnGroundController.pivot.position;
+        centerZ = turnGroundController.pivot.position.z;
+        turnGroundController.spawner.moveDirection = new Vector3(-1, 0, 0);
+        transform.rotation = Quaternion.Euler(0, 90f, 0);
+        desiredLane = 1;
+        oldLane = 1;
+    }
+    
+    public void TurnLeft()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
+        TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
+        isZPositive = true;
+        transform.position = turnGroundController.pivot.position;
+        center = turnGroundController.pivot.position.x;
+        turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        desiredLane = 1;
+        oldLane = 1;
     }
 
     private void Jump()

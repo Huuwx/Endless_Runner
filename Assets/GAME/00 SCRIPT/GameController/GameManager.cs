@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     private int coinNumber;
 
     [SerializeField] GameObject gameOver;
+    [SerializeField] TextMeshProUGUI gameOverTxt;
     public bool isGameOver;
 
 
@@ -74,7 +75,10 @@ public class GameManager : MonoBehaviour
         {
             if(isGameOver)
             {
-                GameController.Instance.SceneController.LoadSceneWithName("SampleScene");
+                //GameController.Instance.SceneController.LoadSceneWithName("SampleScene");
+                Player.Revive();
+                gameOver.SetActive(false);
+                isGameOver = false;
                 return;
             }
             isStarted = true;
@@ -92,6 +96,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
+        gameOverTxt.text = "Tap to Save Player";
         gameOver.SetActive(true);
     }
 }

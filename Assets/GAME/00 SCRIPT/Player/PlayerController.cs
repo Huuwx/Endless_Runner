@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
     [SerializeField] private Transform rcPoint;
+    
+    private Vector3 revivePoint;
+    private float distanceOfRvPoint = 5;
 
     [SerializeField] float rcDistance;
     [SerializeField]  float rayCount;
@@ -36,19 +39,6 @@ public class PlayerController : MonoBehaviour
         animator = gameObject.GetComponentInChildren<Animator>();
         playerMovement.Init();
     }
-    
-    // private void Awake()
-    // {
-    //     isGrounded = false;
-    //     playerCollider = GetComponent<Collider>();
-    //     playerMovement = gameObject.GetComponent<PlayerMovement>();
-    // }
-
-    // Start is called before the first frame update
-    // void Start()
-    // {
-    //     animator = gameObject.GetComponentInChildren<Animator>();
-    // }
 
     // Update is called once per frame
     void Update()
@@ -69,15 +59,13 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 origin = new  Vector3(rcPoint.position.x, rcPoint.position.y, rcPoint.position.z - height / 2 + i  * step);
             RaycastHit hit;
-            bool test = Physics.Raycast(origin, Vector3.down, out hit, rcDistance,  groundLayer);
-            if (test)
+            bool checkGround = Physics.Raycast(origin, Vector3.down, out hit, rcDistance,  groundLayer);
+            if (checkGround)
             {
-                // Debug.Log(hit.transform.name);
-                // Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
                 groundHitCount++;
             }
             
-            Debug.DrawRay(origin, Vector3.down * rcDistance, test ? Color.green : Color.red);
+            Debug.DrawRay(origin, Vector3.down * rcDistance, checkGround ? Color.green : Color.red);
             if (groundHitCount == 0)
             {
                 if (!isGrounded)
@@ -114,21 +102,47 @@ public class PlayerController : MonoBehaviour
         playerParameters.State = PlayerState.Dead;
         if (playerMovement.GetIsZPositive())
         {
-            playerMovement.rb.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
+            playerMovement.Rb.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
         }
         else
         {
-            playerMovement.rb.AddForce(new Vector3(-1, 1, 0) * 5, ForceMode.Impulse);
+            playerMovement.Rb.AddForce(new Vector3(-1, 1, 0) * 5, ForceMode.Impulse);
         }
-        playerMovement.rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
+        playerMovement.Rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
         GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.death);
         animator.SetTrigger(CONSTANT.Death);
-        GameOver();
+        GameManager.Instance.GameOver();
     }
 
-    public void GameOver()
+    public void Revive()
     {
-        GameManager.Instance.GameOver();
+        if(playerMovement.IsZPositive){
+            if (playerMovement.CanTurn)
+            {
+                revivePoint = transform.position + Vector3.right * distanceOfRvPoint;
+                playerMovement.TurnRight();
+            }
+            else
+            {
+                revivePoint = transform.position + Vector3.forward * distanceOfRvPoint;
+            }
+        }
+        else
+        {
+            if (playerMovement.CanTurn)
+            {
+                revivePoint = transform.position + Vector3.forward * distanceOfRvPoint;
+                playerMovement.TurnLeft();
+            }
+            else
+            {
+                revivePoint = transform.position + Vector3.right * distanceOfRvPoint;
+            }
+        }
+        transform.position = revivePoint;
+        animator.SetTrigger("Revive");
+        playerParameters.State = PlayerState.Normal;
+        playerMovement.Rb.excludeLayers &= ~(1 << LayerMask.NameToLayer("Barrier"));
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -160,28 +174,6 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.ItemManager.ChangeItem(checkItem.index);
             GameManager.Instance.ItemController.ItemUseTime();
         }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        // if (playerParameters.IsAlive)
-        // {
-        //     if (collision.gameObject.CompareTag("Ground"))
-        //     {
-        //         isGrounded = true;
-        //     }
-        // }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        // if (playerParameters.IsAlive)
-        // {
-        //     if (collision.gameObject.CompareTag("Ground"))
-        //     {
-        //         isGrounded = false;
-        //     }
-        // }
     }
 
     private void OnTriggerEnter(Collider other)

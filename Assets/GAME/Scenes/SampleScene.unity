@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 462c48b53df305d4fa27a3cbe449a460, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -3466,6 +3466,7 @@ MonoBehaviour:
   isStarted: 0
   coinNumberTxt: {fileID: 19669991}
   gameOver: {fileID: 1511258264}
+  gameOverTxt: {fileID: 1110054703}
   isGameOver: 0
 --- !u!114 &1647758377
 MonoBehaviour:
