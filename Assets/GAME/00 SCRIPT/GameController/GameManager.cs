@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             if(isGameOver)
             {
                 //GameController.Instance.SceneController.LoadSceneWithName("SampleScene");
-                Player.Revive();
+                StartCoroutine(GameController.Instance.SceneController.WaitForRevivePlayer());
                 gameOver.SetActive(false);
                 isGameOver = false;
                 return;

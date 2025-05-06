@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform rcPoint;
     
     private Vector3 revivePoint;
-    private float distanceOfRvPoint = 5;
+    private float distanceOfRvPoint = 8f;
 
     [SerializeField] float rcDistance;
     [SerializeField]  float rayCount;
@@ -114,13 +114,45 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.GameOver();
     }
 
+    // public void Revive()
+    // {
+    //     if(playerMovement.IsZPositive){
+    //         if (playerMovement.CanTurn)
+    //         {
+    //             revivePoint = transform.position + Vector3.right * distanceOfRvPoint;
+    //             playerMovement.TurnRight();
+    //         }
+    //         else
+    //         {
+    //             revivePoint = transform.position + Vector3.forward * distanceOfRvPoint;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (playerMovement.CanTurn)
+    //         {
+    //             revivePoint = transform.position + Vector3.forward * distanceOfRvPoint;
+    //             playerMovement.TurnLeft();
+    //         }
+    //         else
+    //         {
+    //             revivePoint = transform.position + Vector3.right * distanceOfRvPoint;
+    //         }
+    //     }
+    //     transform.position = revivePoint;
+    //     animator.SetTrigger("Revive");
+    //     playerParameters.State = PlayerState.Normal;
+    //     playerMovement.Rb.excludeLayers &= ~(1 << LayerMask.NameToLayer("Barrier"));
+    // }
+    
     public void Revive()
     {
-        if(playerMovement.IsZPositive){
+        // Calculate revive point first
+        if(playerMovement.IsZPositive)
+        {
             if (playerMovement.CanTurn)
             {
                 revivePoint = transform.position + Vector3.right * distanceOfRvPoint;
-                playerMovement.TurnRight();
             }
             else
             {
@@ -132,14 +164,26 @@ public class PlayerController : MonoBehaviour
             if (playerMovement.CanTurn)
             {
                 revivePoint = transform.position + Vector3.forward * distanceOfRvPoint;
-                playerMovement.TurnLeft();
             }
             else
             {
                 revivePoint = transform.position + Vector3.right * distanceOfRvPoint;
             }
         }
+
+        // Set position first
         transform.position = revivePoint;
+
+        // Then handle turns
+        if(playerMovement.IsZPositive && playerMovement.CanTurn)
+        {
+            playerMovement.TurnRight();
+        }
+        else if(!playerMovement.IsZPositive && playerMovement.CanTurn)
+        {
+            playerMovement.TurnLeft();
+        }
+
         animator.SetTrigger("Revive");
         playerParameters.State = PlayerState.Normal;
         playerMovement.Rb.excludeLayers &= ~(1 << LayerMask.NameToLayer("Barrier"));
