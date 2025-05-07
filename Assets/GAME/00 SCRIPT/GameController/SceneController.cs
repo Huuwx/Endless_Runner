@@ -38,8 +38,9 @@ public class SceneController : MonoBehaviour
         transitionAnim.SetTrigger("End");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(name);
-        imgTransition.SetActive(false);
         transitionAnim.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        imgTransition.SetActive(false);
     }
 
     public IEnumerator WaitForRevivePlayer()
@@ -50,12 +51,14 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         GameManager.Instance.Player.Revive();
         
-        if (virtualCamera != null)
+        var brain = Camera.main.GetComponent<CinemachineBrain>();
+
+
+        if (brain != null)
         {
-            // Force update camera position
-            virtualCamera.ForceCameraPosition(virtualCamera.Follow.position, virtualCamera.Follow.rotation);
+            brain.m_IgnoreTimeScale = true;
         }
-        
+        yield return new WaitForSecondsRealtime(0.3f);
         transitionAnim.SetTrigger("Start");
         yield return new WaitForSecondsRealtime(1f);
         imgTransition.SetActive(false);
@@ -71,5 +74,11 @@ public class SceneController : MonoBehaviour
         
         countdownText.gameObject.SetActive(false);
         Time.timeScale = 1;
+        
+        if (brain != null)
+        {
+            brain.m_IgnoreTimeScale = false;
+        }
+        
     }
 }

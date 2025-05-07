@@ -14,6 +14,18 @@ public enum PlayerState
 public class PlayerParameters
 {
     [SerializeField] private float jumpForce = 17f;
+    private int lives = 2;
+    public int Lives
+    {
+        get => lives;
+        set
+        {
+            if (value < 0)
+                lives = 0;
+            else
+                lives = value;
+        }
+    }
     
     public PlayerState State { get; set; }
 

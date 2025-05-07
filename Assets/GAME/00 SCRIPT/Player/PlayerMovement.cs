@@ -196,11 +196,15 @@ public class PlayerMovement : MonoBehaviour
             oldLane = 1;
         }
     }
-
+    
     public void TurnRight()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
+        if (hitColliders.Length == 0) return;  // Guard clause to prevent array access if empty
+
         TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
+        if (turnGroundController == null) return;  // Guard clause if component not found
+
         isZPositive = false;
         transform.position = turnGroundController.pivot.position;
         centerZ = turnGroundController.pivot.position.z;
@@ -209,11 +213,15 @@ public class PlayerMovement : MonoBehaviour
         desiredLane = 1;
         oldLane = 1;
     }
-    
+
     public void TurnLeft()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f, turnLayer);
+        if (hitColliders.Length == 0) return;  // Guard clause to prevent array access if empty
+
         TurnGroundController turnGroundController = hitColliders[0].GetComponent<TurnGroundController>();
+        if (turnGroundController == null) return;  // Guard clause if component not found
+
         isZPositive = true;
         transform.position = turnGroundController.pivot.position;
         center = turnGroundController.pivot.position.x;

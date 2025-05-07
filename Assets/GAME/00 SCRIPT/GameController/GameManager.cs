@@ -76,7 +76,15 @@ public class GameManager : MonoBehaviour
             if(isGameOver)
             {
                 //GameController.Instance.SceneController.LoadSceneWithName("SampleScene");
-                StartCoroutine(GameController.Instance.SceneController.WaitForRevivePlayer());
+                if (Player.playerParameters.Lives <= 0)
+                {
+                    StartCoroutine(GameController.Instance.SceneController.LoadLevel("SampleScene"));
+                }
+                else
+                {
+                    StartCoroutine(GameController.Instance.SceneController.WaitForRevivePlayer());
+                }
+
                 gameOver.SetActive(false);
                 isGameOver = false;
                 return;
@@ -96,7 +104,15 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
-        gameOverTxt.text = "Tap to Save Player";
+        if (Player.playerParameters.Lives <= 0)
+        {
+            gameOverTxt.text = "Tap to Restart";
+        }
+        else
+        {
+            gameOverTxt.text = "Tap to Save Player";
+        }
+
         gameOver.SetActive(true);
     }
 }
