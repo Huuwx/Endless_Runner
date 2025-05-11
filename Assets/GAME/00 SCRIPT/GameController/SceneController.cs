@@ -13,18 +13,25 @@ public class SceneController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countdownText;
     private float countdownDuration = 3f;
     
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    private CinemachineBrain cinemachineBrain;
+    
+    //[SerializeField] private CinemachineVirtualCamera virtualCamera;
+    
+    private void Awake()
+    {
+        cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
+    }
 
     private void Start()
     {
-        if (Camera.main != null)
-        {
-            var brain = Camera.main.GetComponent<CinemachineBrain>();
-            if (brain != null)
-            {
-                brain.m_UpdateMethod = CinemachineBrain.UpdateMethod.LateUpdate;
-            }
-        }
+        // if (Camera.main != null)
+        // {
+        //     var brain = Camera.main.GetComponent<CinemachineBrain>();
+        //     if (brain != null)
+        //     {
+        //         brain.m_UpdateMethod = CinemachineBrain.UpdateMethod.LateUpdate;
+        //     }
+        // }
     }
 
     public void LoadSceneWithName(string name)
@@ -49,18 +56,18 @@ public class SceneController : MonoBehaviour
         imgTransition.SetActive(true);
         transitionAnim.SetTrigger("End");
         yield return new WaitForSecondsRealtime(1f);
+        
         GameManager.Instance.Player.Revive();
         
-        var brain = Camera.main.GetComponent<CinemachineBrain>();
-
-
-        if (brain != null)
+        if (cinemachineBrain != null)
         {
-            brain.m_IgnoreTimeScale = true;
+            cinemachineBrain.m_IgnoreTimeScale = true;
         }
         yield return new WaitForSecondsRealtime(0.3f);
+        
         transitionAnim.SetTrigger("Start");
         yield return new WaitForSecondsRealtime(1f);
+        
         imgTransition.SetActive(false);
         
         countdownText.gameObject.SetActive(true);
@@ -71,13 +78,13 @@ public class SceneController : MonoBehaviour
             countdownText.text = Mathf.CeilToInt(timeLeft).ToString();
             yield return null;
         }
-        
         countdownText.gameObject.SetActive(false);
+        
         Time.timeScale = 1;
         
-        if (brain != null)
+        if (cinemachineBrain != null)
         {
-            brain.m_IgnoreTimeScale = false;
+            cinemachineBrain.m_IgnoreTimeScale = false;
         }
         
     }

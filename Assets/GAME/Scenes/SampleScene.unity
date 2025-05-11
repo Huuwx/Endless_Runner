@@ -851,7 +851,6 @@ MonoBehaviour:
   transitionAnim: {fileID: 0}
   imgTransition: {fileID: 0}
   countdownText: {fileID: 0}
-  virtualCamera: {fileID: 0}
 --- !u!1 &346266423
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +908,7 @@ MonoBehaviour:
   - {fileID: 2026619498105937804, guid: a4e872b6fac3cc04d96fe5d9701352ae, type: 3}
   initialSpawnCount: 8
   extraGround: 7
-  destoryZone: 100
+  destoryZone: 110
   axis: 3
   moveDirection: {x: -1, y: 0, z: 0}
   movingSpeed: 15
@@ -2320,7 +2319,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 1
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -4408,7 +4407,6 @@ MonoBehaviour:
   transitionAnim: {fileID: 244524451}
   imgTransition: {fileID: 172714802}
   countdownText: {fileID: 1276673764}
-  virtualCamera: {fileID: 937670267}
 --- !u!1001 &1992697154
 PrefabInstance:
   m_ObjectHideFlags: 0

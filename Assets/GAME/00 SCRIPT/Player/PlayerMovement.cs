@@ -5,18 +5,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private BoxCollider boxCollider;
-    private Rigidbody rb;
-    public Rigidbody Rb
-    {
-        get { return rb; }
-        set { rb = value; }
-    }
-
     private int oldLane = 1;
     private int desiredLane = 1;
 
-    private float center = 0;
+    private float centerX = 0;
     private float centerZ = -20;
     private float laneDistance = 3;
 
@@ -35,31 +27,14 @@ public class PlayerMovement : MonoBehaviour
         set { canTurn = value; }
     }
 
-    //[SerializeField] float speed = 0f;
-
 
     public void Init()
     {
-        rb = GetComponent<Rigidbody>();
-        boxCollider = rb.GetComponent<BoxCollider>();
-        center = 0;
+        centerX = 0;
+        centerZ = -20;
         isZPositive = true;
         canTurn = false;
     }
-    
-    // private void Awake()
-    // {
-    //     center = 0;
-    //     isZPositive = true;
-    //     canTurn = false;
-    // }
-
-    // Start is called before the first frame update
-    // void Start()
-    // {
-    //     rb = GetComponent<Rigidbody>();
-    //     boxCollider = rb.GetComponent<BoxCollider>();
-    // }
 
     // Update is called once per frame
     void Update()
@@ -116,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (isZPositive)
             {
-                targetPos = new Vector3(center, transform.position.y, transform.position.z);
+                targetPos = new Vector3(centerX, transform.position.y, transform.position.z);
 
                 if (desiredLane == 0)
                 {
@@ -189,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isZPositive = true;
             transform.position = turnGroundController.pivot.position;
-            center = turnGroundController.pivot.position.x;
+            centerX = turnGroundController.pivot.position.x;
             turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
             transform.rotation = Quaternion.Euler(0, 0, 0);
             desiredLane = 1;
@@ -224,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
 
         isZPositive = true;
         transform.position = turnGroundController.pivot.position;
-        center = turnGroundController.pivot.position.x;
+        centerX = turnGroundController.pivot.position.x;
         turnGroundController.spawner.moveDirection = new Vector3(0, 0, -1);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         desiredLane = 1;
@@ -235,17 +210,21 @@ public class PlayerMovement : MonoBehaviour
     {
         GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.jump);
         GameManager.Instance.Player.animator.SetBool(CONSTANT.Jump, true);
-        rb.AddForce(Vector3.up * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
+        GameManager.Instance.Player.Rb.AddForce(Vector3.up * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
     }
 
     private IEnumerator Slide()
     {
         if(!GameManager.Instance.Player.isGrounded)
         {
-            rb.AddForce(Vector3.down * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
+            GameManager.Instance.Player.Rb.AddForce(Vector3.down * GameManager.Instance.Player.playerParameters.GetJumpForce(), ForceMode.Impulse);
         }
-        boxCollider.size = new Vector3(1, 0.5f, 1);
-        boxCollider.center = new Vector3(0, 0.25f, 0);
+        GameManager.Instance.Player.SetColliderSize(1, 0.5f, 1, 0.25f);
+        // if (boxCollider != null)
+        // {
+        //     boxCollider.size = new Vector3(1, 0.5f, 1);
+        //     boxCollider.center = new Vector3(0, 0.25f, 0);
+        // }
         GameManager.Instance.Player.animator.SetBool(CONSTANT.Sliding, true);
 
         yield return new WaitForSeconds(1f);
@@ -255,8 +234,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetCollider()
     {
-        boxCollider.size = new Vector3(1, 2.3f, 1);
-        boxCollider.center = new Vector3(0, 1.1f, 0);
+        GameManager.Instance.Player.SetColliderSize(1, 2.3f, 1, 1.1f);
+        // if (boxCollider != null)
+        // {
+        //     boxCollider.size = new Vector3(1, 2.3f, 1);
+        //     boxCollider.center = new Vector3(0, 1.1f, 0);
+        // }
+
         GameManager.Instance.Player.animator.SetBool(CONSTANT.Sliding, false);
     }
 
@@ -267,7 +251,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Bounce()
     {
-        rb.AddForce(Vector3.up * 30, ForceMode.Impulse);
+        GameManager.Instance.Player.Rb.AddForce(Vector3.up * 30, ForceMode.Impulse);
     }
 
     public bool GetIsZPositive()

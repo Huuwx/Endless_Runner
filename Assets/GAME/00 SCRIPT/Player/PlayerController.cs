@@ -15,6 +15,25 @@ public class PlayerController : MonoBehaviour
     public PlayerParameters playerParameters = new PlayerParameters();
     
     [SerializeField] Collider playerCollider;
+    public Collider PlayerCollider
+    {
+        get { return playerCollider; }
+        set { playerCollider = value; }
+    }
+    
+    [SerializeField] BoxCollider boxCollider;
+    public BoxCollider BoxCollider
+    {
+        get { return boxCollider; }
+        set { boxCollider = value; }
+    }
+    
+    private Rigidbody rb;
+    public Rigidbody Rb
+    {
+        get { return rb; }
+        set { rb = value; }
+    }
     
     public bool isGrounded = false;
     [SerializeField] LayerMask groundLayer;
@@ -34,7 +53,9 @@ public class PlayerController : MonoBehaviour
     public void Init()
     {
         isGrounded = false;
+        rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<Collider>();
+        boxCollider = playerCollider as BoxCollider;
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponentInChildren<Animator>();
         playerMovement.Init();
@@ -102,13 +123,13 @@ public class PlayerController : MonoBehaviour
         playerParameters.State = PlayerState.Dead;
         if (playerMovement.GetIsZPositive())
         {
-            playerMovement.Rb.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, 1, -1) * 5, ForceMode.Impulse);
         }
         else
         {
-            playerMovement.Rb.AddForce(new Vector3(-1, 1, 0) * 5, ForceMode.Impulse);
+            rb.AddForce(new Vector3(-1, 1, 0) * 5, ForceMode.Impulse);
         }
-        playerMovement.Rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
+        rb.excludeLayers |= (1 << LayerMask.NameToLayer("Barrier"));
         GameController.Instance.SoundController.PlayOneShot(GameController.Instance.SoundController.death);
         animator.SetTrigger(CONSTANT.Death);
         GameManager.Instance.GameOver();
@@ -157,7 +178,16 @@ public class PlayerController : MonoBehaviour
     
         animator.SetTrigger("Revive");
         playerParameters.State = PlayerState.Normal;
-        playerMovement.Rb.excludeLayers &= ~(1 << LayerMask.NameToLayer("Barrier"));
+        rb.excludeLayers &= ~(1 << LayerMask.NameToLayer("Barrier"));
+    }
+    
+    public void SetColliderSize(float x, float y, float z, float size)
+    {
+        if (boxCollider != null)
+        {
+            boxCollider.size = new Vector3(x, y, z);
+            boxCollider.center = new Vector3(0, size, 0);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
