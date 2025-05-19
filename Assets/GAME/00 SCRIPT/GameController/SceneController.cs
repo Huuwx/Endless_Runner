@@ -50,6 +50,12 @@ public class SceneController : MonoBehaviour
         imgTransition.SetActive(false);
     }
 
+    // public IEnumerator LoadLevelInGame(string name)
+    // {
+    //     yield return LoadLevel(name);
+    //     cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
+    // }
+
     public IEnumerator WaitForRevivePlayer()
     {
         Time.timeScale = 0;
@@ -59,10 +65,16 @@ public class SceneController : MonoBehaviour
         
         GameManager.Instance.Player.Revive();
         
-        if (cinemachineBrain != null)
+        if(cinemachineBrain == null)
+        {
+            cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
+            cinemachineBrain.m_IgnoreTimeScale = true;
+        }
+        else
         {
             cinemachineBrain.m_IgnoreTimeScale = true;
         }
+        
         yield return new WaitForSecondsRealtime(0.3f);
         
         transitionAnim.SetTrigger("Start");
@@ -82,10 +94,7 @@ public class SceneController : MonoBehaviour
         
         Time.timeScale = 1;
         
-        if (cinemachineBrain != null)
-        {
-            cinemachineBrain.m_IgnoreTimeScale = false;
-        }
+        cinemachineBrain.m_IgnoreTimeScale = false;
         
     }
 }
