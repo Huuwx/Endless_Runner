@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
             collision.rigidbody.AddForce(new Vector3(1, 1, 0) * 25, ForceMode.Impulse);
             collision.rigidbody.excludeLayers |= (1 << LayerMask.NameToLayer("Player"));
             GameManager.Instance.ItemManager.ChangeItem(checkItem.index);
-            GameManager.Instance.ItemController.ItemUseTime();
+            GameManager.Instance.ItemAdapter.ItemUseTime();
         }
     }
 
@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
                 return;
             
             GameManager.Instance.ItemManager.ChangeItem(checkItem.index);
-            GameManager.Instance.ItemController.ItemUseTime();
+            GameManager.Instance.ItemAdapter.ItemUseTime();
             other.gameObject.SetActive(false);
         }
     }

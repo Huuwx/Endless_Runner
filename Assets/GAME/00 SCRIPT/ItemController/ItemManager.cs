@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] List<ItemBase> _listItems = new List<ItemBase>();
-    [SerializeField] ItemController _item;
+    [SerializeField] ItemAdapter _item;
 
     public void ChangeItem(int index)
     {

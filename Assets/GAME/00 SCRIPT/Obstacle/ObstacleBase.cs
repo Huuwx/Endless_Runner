@@ -20,7 +20,7 @@ public abstract class ObstacleBase : MonoBehaviour
             {
                 GameManager.Instance.ParticleController.explosion.Play();
                 GameManager.Instance.ItemManager.ChangeItem(CONSTANT.ShieldItemIndex);
-                GameManager.Instance.ItemController.ClearUseTime();
+                GameManager.Instance.ItemAdapter.ClearUseTime();
                 this.gameObject.SetActive(false);
                 return;
             }

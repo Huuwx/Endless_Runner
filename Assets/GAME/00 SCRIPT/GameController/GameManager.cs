@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,8 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ItemManager _itemManager;
     public ItemManager ItemManager { get { return _itemManager; } }
     
-    [SerializeField] private ItemController _itemController;
-    public ItemController ItemController { get { return _itemController; } }
+    [FormerlySerializedAs("_itemController")] [SerializeField] private ItemAdapter itemAdapter;
+    public ItemAdapter ItemAdapter { get { return itemAdapter; } }
     
     [SerializeField] ParticleSystemController _particleController;
     public ParticleSystemController ParticleController { get { return _particleController; } }
